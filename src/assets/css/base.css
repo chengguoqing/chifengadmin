@@ -456,7 +456,7 @@ em {
 }
 
 .ml10 {
-    margin-left: 10px
+    margin-left: 10px !important
 }
 
 .ml5 {

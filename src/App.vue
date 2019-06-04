@@ -3,7 +3,7 @@
    
 <el-container>
   <el-header class="sd_df_der">
-        <img class="sd_jhj_d" src="https://www.kxhtml.com/console/images/logo.svg?v=201708221756">
+        <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png">
     </el-header>
   <el-container  class="sd_deet">
     <el-aside width="200px">
