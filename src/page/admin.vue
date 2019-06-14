@@ -106,7 +106,10 @@
                     user_name: this.user_name,
                     user_paw: this.user_paw
                 })
-                data_e=data_e.data
+                if(data_e.code<0){
+                      this.$message.error(data_e.msg);
+                    return
+                }
                 this.$cookies.set("user_id", data_e.id)
                 this.$cookies.set("user_info", data_e)
                 this.$store.state.user_info = data_e
