@@ -6,7 +6,7 @@
   width="450"
   trigger="click">
 <section>
-    
+ 
     <el-form ref="header" :model="header" label-width="80px">
         <el-form-item label="页面名称">
             <el-input placeholder="请输入页面名称" v-model="header.name" ></el-input>
@@ -90,6 +90,7 @@
     }
 
     .wiy_deert {
+           
         width: 100px;
         height: 100px;
     }

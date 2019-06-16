@@ -16,7 +16,7 @@ export default {
                 token: encrypt.toString()
             }
             var sd_Df = ""
-               let th = this
+            let th = this
             return new Promise((resolve, reject) => {
                 axios({
                     method: 'post',
@@ -38,7 +38,7 @@ export default {
                     if (sd_Df.data.code == -1) {
                         th.$message.error(sd_Df.data.msg);
                     }
-                     resolve(sd_Df.data)
+                    resolve(sd_Df.data)
                 })
 
             })
@@ -71,6 +71,67 @@ export default {
         }
 
 
+        Vue.prototype.set_ltlist = function (date_e) {
+            var liao_user = []
+            if (localStorage.liao_user) {
+                liao_user = JSON.parse(localStorage.liao_user)
+            }
+            var sd_df = 0,
+                sd_idx = 0
+            try {
+                liao_user.map((a, b) => {
+                    if (a.targetId == date_e.targetId) {
+                        sd_df++
+                        sd_idx = b
+                    }
+                })
+            } catch (e) {
+
+            }
+            var sd_drt = {}
+            sd_drt.targetId = date_e.targetId
+            sd_drt.user_name = date_e.content.extra.user_name
+            sd_drt.user_icon = date_e.content.extra.user_icon
+            sd_drt.content = date_e.content.content
+            sd_drt.receivedTime = date_e.receivedTime
+            if (sd_df == 0) { //没有相同的用户添加缓存  否则修改缓存的数据
+                liao_user.push(sd_drt)
+            } else {
+                liao_user[sd_idx] = sd_drt
+            }
+            localStorage.liao_user = JSON.stringify(liao_user)
+        }
+        //        ty 消息类型  1接受  2自己发送的
+        Vue.prototype.set_msgtext = function (date_e, ty) {
+            var msgtext = []
+            if (localStorage[date_e.targetId]) {
+                msgtext = JSON.parse(localStorage[date_e.targetId])
+            }
+            var sd_drt = {}
+            sd_drt.targetId = date_e.targetId
+            sd_drt.user_name = date_e.content.extra.user_name
+            sd_drt.user_icon = date_e.content.extra.user_icon
+            sd_drt.content = date_e.content.content
+            sd_drt.ty = ty
+            sd_drt.receivedTime = date_e.receivedTime
+            msgtext.push(sd_drt)
+            localStorage[date_e.targetId] = JSON.stringify(msgtext)
+
+        }
+
+
+        Vue.prototype.push_msg = function (date_e, ty) {
+            var sd_drt = {}
+            sd_drt.targetId = date_e.targetId
+            sd_drt.user_name = date_e.content.extra.user_name
+            sd_drt.user_icon = date_e.content.extra.user_icon
+            sd_drt.content = date_e.content.content
+            sd_drt.ty = ty
+            sd_drt.receivedTime = date_e.receivedTime
+            return sd_drt
+        }
+
+
         Vue.prototype.time_d = function (t) {
             let time = new Date()
             time.setTime(t)
@@ -83,6 +144,58 @@ export default {
             Month < 10 ? Month = 0 + '' + Month : ''
             return Year + "-" + Month + "-" + Data + " " + hour + ":" + Minutes + ":" + Seconds
         }
+
+
+        Vue.prototype.time_k = function (t) {
+            let time = new Date() //发送消息时间
+            time.setTime(t)
+            var jintian = new Date() //当前时间
+            var sd_d = "",
+                getMonth_a = time.getMonth(),
+                getMonth_b = jintian.getMonth(),
+                getData_a = time.getDate(),
+                getData_b = jintian.getDate(),
+                getHours_d = jintian.getHours(), //当前的时间
+                xs_sd = ""
+            if (getHours_d == 0) {
+                sd_d = "凌晨"
+            } else if (getHours_d > 11 && getHours_d < 12) {
+                sd_d = "上午"
+            } else if (getHours_d == 12) {
+                sd_d = "中午"
+            } else if (getHours_d > 12) {
+                sd_d = "下午"
+            }
+
+            var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var myddy = time.getDay(); //获取存储当前日期
+            let Year = time.getFullYear(),
+                Month = time.getMonth() + 1,
+                Data = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate(),
+                hour = time.getHours() < 10 ? 0 + '' + time.getHours() : time.getHours(),
+                Minutes = time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes(),
+                Seconds = time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds()
+            Month < 10 ? Month = 0 + '' + Month : ''
+            if (getMonth_a == getMonth_b) {
+
+                if (getData_a == getData_b) {
+                    xs_sd = sd_d + " " + hour + ":" + Minutes
+                } else if (getData_b - getData_a == 1) {
+                    xs_sd = "昨天"
+                } else if (getData_b - getData_a > 1 && getData_b - getData_a < 7) {
+                    xs_sd = weekday[myddy]
+                } else {
+                    xs_sd = Year + "/" + Month + "/" + Data
+                }
+            } else {
+                xs_sd = Year + "/" + Month + "/" + Data
+            }
+
+
+
+            return xs_sd
+        }
+
 
 
         Vue.prototype.hf = function (url, cu) { //路由跳转

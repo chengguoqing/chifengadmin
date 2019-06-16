@@ -7,13 +7,22 @@ import shopp from './shopp/index.vue'
 import wenzhang from './wenzhang/index.vue'
 import add_wz from './wenzhang/add_wz.vue'
 import dianpu from './page/dianpu.vue'
-
-
+import test from './page/test.vue'
+import kefu from './kefu/index.vue'
 Vue.use(Router)
 
 export default new Router({
     routes: [
-        {
+          {
+            path: '/test',
+            name: '',
+            component: test,
+            meta: {
+                requireAuth: true,
+                title: '首页'
+            }
+
+    }, {
             path: '/',
             name: '',
             component: index,
@@ -130,6 +139,15 @@ export default new Router({
             bz: "",
             meta: {
                 title: '店铺信息'
+            }
+
+    }, {
+            path: '/kefu',
+            name: 'kefu',
+            component: kefu,
+            bz: "",
+            meta: {
+                title: '客服'
             }
 
     }

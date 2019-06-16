@@ -5,7 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-      user_info:""
+      user_info:"",
+      msg_list:[],
+      user_list:"",
+      targetId_vuex:""
   },
   mutations: {
 

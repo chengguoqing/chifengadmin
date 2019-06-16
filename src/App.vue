@@ -8,12 +8,14 @@
   <el-container  class="sd_deet">
     <el-aside width="200px">
     	<div class="sd_jh_der">
+<!--
             <section class="cen pm20">
                 <img :src="$store.state.user_info.touxiang" class="usd_deert">
                 <p class="cen cf fz14 mt10">
             {{$store.state.user_info.user_name}}
                 </p>
             </section>
+-->
             
             
             <el-menu
@@ -39,80 +41,89 @@
       <span slot="title">商品</span>
     </template>
 
-    <el-menu-item-group>
-     <el-menu-item index="/shopp/sp_list">商品列表</el-menu-item>
-    </el-menu-item-group>
-  <el-menu-item-group>
-     <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
-    </el-menu-item-group>
+<el-menu-item-group>
+    <el-menu-item index="/shopp/sp_list">商品列表</el-menu-item>
+</el-menu-item-group>
+<el-menu-item-group>
+    <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
+</el-menu-item-group>
 
 </el-submenu>
 
 
-        
-                
-                
 
-       <el-menu-item index="/wenzhang">
+
+
+
+<el-menu-item index="/wenzhang">
     <i class="el-icon-menu"></i>
     <span slot="title">文章列表</span>
-  </el-menu-item>   
+</el-menu-item>
 
-   
-                 <el-menu-item index="/dianpu">
+
+<el-menu-item index="/dianpu">
     <i class="el-icon-menu"></i>
     <span slot="title">店铺信息</span>
-  </el-menu-item>  
-                    
-                 <el-menu-item index="/user_msg">
+</el-menu-item>
+
+<el-menu-item index="/user_msg">
     <i class="el-icon-menu"></i>
     <span slot="title">用户管理</span>
-  </el-menu-item>          
- 
-
-    
-    </el-menu>
+</el-menu-item>
 
 
+<el-menu-item index="/kefu">
+    <i class="el-icon-menu"></i>
+    <span slot="title">客服</span>
+</el-menu-item>
 
 
-	   <ul class="sd_deeett">
-           <li  @click="out_back">
-              退出登录
-                
-            </li>
-        </ul>
+</el-menu>
 
 
-	</div>
-    </el-aside>
-    <el-main>
-        <router-view v-wechat-title="$route.meta.title"/>
-    </el-main>
-  </el-container>
+
+
+<ul class="sd_deeett">
+    <li @click="out_back">
+        退出登录
+
+    </li>
+</ul>
+
+
+</div>
+</el-aside>
+<el-main>
+    <router-view v-wechat-title="$route.meta.title" />
+</el-main>
 </el-container>
-      
-    
-  </div>
+</el-container>
+
+
+</div>
 </template>
 
 <script>
+    import {
+        liaotian_wai
+    } from "@/assets/js/liaotian"
     export default {
         data() {
             return {
                 left_mu: [{
                     name: "首页",
                     path: "",
-                    bz:"1"
+                    bz: "1"
                 }, {
                     name: "用户管理",
                     path: "user_msg",
-                     bz:"2"
+                    bz: "2"
                 }],
-                moren_ds:" ",
+                moren_ds: " ",
                 user_fo: ""
             }
         },
+        mixins: [liaotian_wai],
         components: {
 
         },
@@ -125,15 +136,17 @@
                     type: 'success'
                 });
             },
-            handleOpen(e){
+            handleOpen(e) {
                 console.log(2);
             },
-            handleClose(e){
-                
+            handleClose(e) {
+
             }
         },
         mounted() {
-        this.$store.state.user_info= this.$cookies.get("user_info")
+            this.$store.state.user_info = this.$cookies.get("user_info")
+                   this.init_liao()
+            this.jieshou()
         },
     }
 
@@ -150,7 +163,7 @@
     }
 
     .sd_deeett li {
-      line-height: 45px;
+        line-height: 45px;
         font-size: 14px;
         color: #fff;
         padding-left: 25px;
