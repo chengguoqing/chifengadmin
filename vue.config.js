@@ -1,15 +1,54 @@
-module.exports = {
+
+const CompressionPlugin = require('compression-webpack-plugin')
+
+const IS_PROD = process.env.NODE_ENV === 'production'
+const cdnDomian = 'https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com'
+
+
+var sd_dert = {
     baseUrl: './',
-    lintOnSave:false,
-    devServer: { //跨域 
-        open: true, //配置自动启动浏览器
-        
-        proxy: {
-            '': { //将www.exaple.com印射为/adminconsole
-                target: 'http://192.168.1.102:8360', // 接口域名
-                changeOrigin: true //是否跨域
-            }
-        }
-    }
+     publicPath: IS_PROD ? cdnDomian : '/',
+    productionSourceMap: false
+
 
 }
+if (process.env.NODE_ENV == 'production') {//build环境
+    sd_dert.chainWebpack = config => {
+        // 省略其它代码 ······
+        // #region 忽略生成环境打包的文件
+
+        var externals = {
+            vue: 'Vue',
+            axios: 'axios',
+            'vant': 'vant',
+            'vue-router': 'VueRouter',
+            vuex: 'Vuex'
+        }
+        config.externals(externals)
+        var cdn = {
+            css: [
+//          'https://cdn.jsdelivr.net/npm/vant@2.0/lib/index.css'
+        ],
+            js: [
+          // vue
+          'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js',
+          // vue-router
+          'https://cdn.staticfile.org/vue-router/3.0.2/vue-router.min.js',
+          // vuex
+          'https://cdn.staticfile.org/vuex/3.1.0/vuex.min.js',
+          // axios
+          'https://cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js',
+          // vant
+          'https://cdn.jsdelivr.net/npm/vant@2.0/lib/vant.min.js'
+        ]
+        }
+        config.plugin('html')
+            .tap(args => {
+                args[0].cdn = cdn
+                return args
+            })
+        // #endregion
+    }
+}
+
+module.exports = sd_dert

@@ -30,7 +30,7 @@
               
        <el-menu-item index="/">
     <i class="el-icon-menu"></i>
-    <span slot="title">首页</span>
+    <span slot="title">首页{{this.$store.state.tesdfr}}</span>
   </el-menu-item>
                 
                 
@@ -104,9 +104,7 @@
 </template>
 
 <script>
-    import {
-        liaotian_wai
-    } from "@/assets/js/liaotian"
+    
     export default {
         data() {
             return {
@@ -123,7 +121,7 @@
                 user_fo: ""
             }
         },
-        mixins: [liaotian_wai],
+     
         components: {
 
         },
@@ -144,9 +142,7 @@
             }
         },
         mounted() {
-            this.$store.state.user_info = this.$cookies.get("user_info")
-                   this.init_liao()
-            this.jieshou()
+               this.$store.dispatch('init')
         },
     }
 

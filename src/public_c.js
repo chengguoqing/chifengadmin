@@ -1,4 +1,4 @@
-var url_d = "/"
+var url_d = "http://192.168.1.100:8360/"
 import router from './router'
 var wx = require('weixin-js-sdk');
 import axios from "axios"

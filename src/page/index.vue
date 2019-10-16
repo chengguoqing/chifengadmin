@@ -1,41 +1,48 @@
 <template>
-	<div >
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item>微页面</el-breadcrumb-item>
-    </el-breadcrumb>
-        
-        
+    <div>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item>微页面</el-breadcrumb-item>
+        </el-breadcrumb>
+
+
         <section class="btm mt10 pt20">
-            
-            <div class="bianji_srt" >
-    
+
+            <div class="bianji_srt">
+
                 <div class="phone_er">
                     <section class="dsf_dertxc" :style="{'background-color':header.bgcolor}">
-                           <zx_header :header="header" @show_img="dialogVisible_er_san=true"></zx_header>
+                        <zx_header :header="header" @show_img="dialogVisible_er_san=true"></zx_header>
+
+
+
+                        <lunbo></lunbo>
+                         <tupian></tupian>
                     </section>
-                   
-                    
+
                     <caidan></caidan>
-                 
-    
+                   
+
+
                 </div>
-                
+
             </div>
-            
-    </section>
-        
-        
-        
-        
-    <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible_er_san" width="890px">    
-        <up_img @close_s="dialogVisible_er_san=false" @queding="queding_er" v-if="dialogVisible_er_san"></up_img>
-    </el-dialog>
-	</div>
+
+        </section>
+
+
+
+
+        <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible_er_san" width="890px">
+            <up_img @close_s="dialogVisible_er_san=false" @queding="queding_er" v-if="dialogVisible_er_san"></up_img>
+        </el-dialog>
+    </div>
 </template>
 <script>
     import zx_header from "@/components/zx/header"
     import caidan from "@/components/zx/caidan"
     import up_img from "@/components/up_img"
+    import lunbo from "@/components/zx/lunbo"
+    import tupian from "@/components/zx/tupian"
     export default {
         data() {
             return {
@@ -51,7 +58,9 @@
         components: {
             zx_header,
             up_img,
-            caidan
+            caidan,
+            lunbo,
+            tupian
         },
         methods: {
             queding_er(data) {
@@ -74,10 +83,11 @@
     .phone_er {
         width: 375px;
         border: 1px solid #e0e0e0;
-    
+
     }
-    .dsf_dertxc{
-            min-height: 460px;
+
+    .dsf_dertxc {
+        min-height: 460px;
     }
 
 </style>

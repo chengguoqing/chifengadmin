@@ -1,26 +1,25 @@
 <template>
 	<div class="parent_dert">
 	   <section class="keft_left">
-
            <ul>
-        <li class="pt10 pm10 pd btm sz dsf_df_drt" v-for="sd in $store.state.user_list" @click="get_sdf(sd.targetId)">
-            <img class="yj user_iconse cz fl" :src="sd.user_icon">
+        <li class="pt10 pm10 pd btm sz dsf_df_drt" v-for="sd in $store.state.getsessions" @click="list_click(sd)">
+            <img class="yj user_iconse cz fl" :src="sd.user_icon" >
         <section class="ov pl10">
             <section class="dian fz15">
                 <el-row >
-                    <el-col :span="16" class="dian">{{sd.user_name}}</el-col>
-                    <el-col :span="8" class="z9 fz12 tr"><span v-html="time_k(sd.receivedTime)"></span></el-col>
+                    <el-col :span="16" class="dian">{{sd.target}}</el-col>
+                    <el-col :span="8" class="z9 fz12 tr"><span v-html="time_k(sd.time)"></span></el-col>
                 </el-row>
             </section>
             <p class="z9 fz12 dian">
-            {{sd.content}}
+            {{sd.msg}}
             </p>
         </section>
             <p class="qc"></p>
     </li>
         </ul>
     </section>
-     <section class="keft_right ">
+     <section class="keft_right "> 
     
          <section class="sd_jjt_der pl20 pr20" ref="xiaoshi_e" id="sd_der">
                 <section class="cen">
@@ -42,12 +41,12 @@
                 </section>
              <!--                    消息列表-->
                     <ul class="mess_list mt20">
-                        <li class="msg" v-for="(sd,idx) in $store.state.msg_list" :class="sd.ty==2?'ab':''">
+                        <li class="msg" v-for="(sd,idx) in $store.state.get_msglist" :class="sd.flow=='in'?'ab':''">
                             <img :src="sd.user_icon" class="yj user_icon_er yj fl">
                         <section class="ov pl20 pt5">
       <section class="pr dsf_d_drtx pr">
           <p class="sd_j_drrt"></p>
-                   {{sd.content}}
+                   {{sd.msg}}
                         </section>
             </section>
                             <p class="qc"></p>
@@ -62,99 +61,68 @@
            <el-input type="textarea" v-model="kefu_text"  placeholder="请输入内容..." rows="7" class="dsf_dertxc" ></el-input>
              
              <section class="pd mt10">
-                <el-button type="primary" @click="fasxi">发送</el-button>
+                <el-button type="primary" @click="fasxiert">发送</el-button>
                 </section>
     </section>
          
          
     </section>
+   
 	</div>
 </template>
 <script>
-    import {
-        liaotian_wai
-    } from "@/assets/js/liaotian"
     export default {
         data() {
             return {
+                kefu_text: "",
+                session: ""
 
             }
         },
         components: {
 
         },
-        mixins: [liaotian_wai],
         methods: {
-            fasxi() {
-                var sd_drte = this.$cookies.get("user_info"),
-                    th = this
-                var msg = new RongIMLib.TextMessage({
-                    content: this.kefu_text,
-                    extra: {
-                        user_icon: sd_drte.data.touxiang,
-                        user_name: sd_drte.data.user_name,
-                        order_id: 16
+            list_click(sd) {
+                console.log(sd);
+                this.session = sd.target
+                this.$store.dispatch('get_sdf', sd.sessionId)
+            },
+            fasxiert() {
+                var value = Math.ceil(Math.random() * 3);
+                var content = {
+                    user_icon: this.$cookies.get("user_info").data.touxiang,
+                    data: {
+                        value: this.kefu_text
+                    }
+                };
+                var th=this
+                var msg = this.$store.state.nim.sendCustomMsg({
+                    scene: 'p2p',
+                    to: th.session,
+                    content: JSON.stringify(content),
+                    done: function sendMsgDone(err) {
+                        
                     }
                 });
-                var conversationType = RongIMLib.ConversationType.PRIVATE; // 单聊, 其他会话选择相应的消息类型即可
-                RongIMClient.getInstance().sendMessage(conversationType, this.targetId, msg, {
-                    onSuccess: function(message) {
-                        console.log(message);
-                        // message 为发送的消息对象并且包含服务器返回的消息唯一 Id 和发送消息时间戳
-                        th.set_msgtext(message, 2)
-                        th.$store.state.msg_list = JSON.parse(localStorage[message.targetId])
-                        th.kefu_text=""
-                    },
-                    onError: function(errorCode, message) {
-                        var info = '';
-                        switch (errorCode) {
-                            case RongIMLib.ErrorCode.TIMEOUT:
-                                info = '超时';
-                                break;
-                            case RongIMLib.ErrorCode.UNKNOWN:
-                                info = '未知错误';
-                                break;
-                            case RongIMLib.ErrorCode.REJECTED_BY_BLACKLIST:
-                                info = '在黑名单中，无法向对方发送消息';
-                                break;
-                            case RongIMLib.ErrorCode.NOT_IN_DISCUSSION:
-                                info = '不在讨论组中';
-                                break;
-                            case RongIMLib.ErrorCode.NOT_IN_GROUP:
-                                info = '不在群组中';
-                                break;
-                            case RongIMLib.ErrorCode.NOT_IN_CHATROOM:
-                                info = '不在聊天室中';
-                                break;
-                        }
-                        console.log('发送失败: ' + info + errorCode);
-                    }
-                });
+                  this.$store.dispatch('pushMsg_er', msg)
+                setTimeout(a => {
+                    this.$refs.xiaoshi_e.scrollTop = (this.$refs.xiaoshi_e.scrollHeight + 500);
+                }, 50);
             }
         },
-        mounted() {
-            var th = this
-            if (localStorage.liao_user) {
-                th.$store.state.user_list = JSON.parse(localStorage.liao_user)
-                th.get_sdf(th.$store.state.user_list[0].targetId)
-                th.targetId = th.$store.state.user_list[0].targetId
-            
-            }
-
-            this.init_liao()
-            this.jieshou()
-        },
+        mounted() {},
         computed: {
-            msg_list_g() {
-                return this.$store.state.msg_list;
+            gh_sdfd() {
+                return this.$store.state.get_msglist
             }
         },
         watch: {
-           msg_list_g: {
+            gh_sdfd: {
                 handler: function() {
-                     setTimeout(a=> {
-                          this.$refs.xiaoshi_e.scrollTop = (this.$refs.xiaoshi_e.scrollHeight + 500);
-                     }, 50);
+                    setTimeout(a => {
+                        this.$refs.xiaoshi_e.scrollTop = (this.$refs.xiaoshi_e.scrollHeight + 500);
+                    }, 50);
                 },
                 deep: true
             }

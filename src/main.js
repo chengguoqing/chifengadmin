@@ -20,9 +20,11 @@ Vue.use(VueCookies)
 Vue.use(ElementUI);
 Vue.use(VueWechatTitle)
 Vue.config.productionTip = false
+import 'vant/lib/index.css';
 Vue.use(Vant);
 Vue.use(public_c);
-
+  import dx_row from "@/components/dx_row.js"
+Vue.use(dx_row)
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
     key: '1ca50beb27f893268297a00cdb0acdf3',
