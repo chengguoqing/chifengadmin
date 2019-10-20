@@ -1,110 +1,65 @@
 <template>
-  <div id="app">
-   
-<el-container>
-  <el-header class="sd_df_der">
-        <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png">
-    </el-header>
-  <el-container  class="sd_deet">
-    <el-aside width="200px">
-    	<div class="sd_jh_der">
-<!--
-            <section class="cen pm20">
-                <img :src="$store.state.user_info.touxiang" class="usd_deert">
-                <p class="cen cf fz14 mt10">
-            {{$store.state.user_info.user_name}}
-                </p>
-            </section>
--->
-            
-            
-            <el-menu
-      :default-active="$route.path"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#47484B"
-      text-color="#fff"
-        :router="true"
-      active-text-color="#2464C8">
-              
-       <el-menu-item index="/">
-    <i class="el-icon-menu"></i>
-    <span slot="title">首页{{this.$store.state.tesdfr}}</span>
-  </el-menu-item>
-                
-                
-                
-                       <el-submenu index="/shopp">
-    <template slot="title">
-      <i class="el-icon-menu"></i>
-      <span slot="title">商品</span>
-    </template>
+    <div id="app">
 
-<el-menu-item-group>
-    <el-menu-item index="/shopp/sp_list">商品列表</el-menu-item>
-</el-menu-item-group>
-<el-menu-item-group>
-    <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
-</el-menu-item-group>
+        <el-container>
+            <el-header class="sd_df_der">
+                <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png">
+            </el-header>
+            <el-container class="sd_deet">
+                <el-aside width="200px">
+                    <div class="sd_jh_der">
+                        <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
+                            <el-menu-item index="/">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">首页{{this.$store.state.tesdfr}}</span>
+                            </el-menu-item>
+                            <el-submenu index="/shopp">
+                                <template slot="title">
+                                    <i class="el-icon-menu"></i>
+                                    <span slot="title">商品</span>
+                                </template>
 
-</el-submenu>
+                                <el-menu-item-group>
+                                    <el-menu-item index="/shopp/sp_list">商品列表</el-menu-item>
+                                </el-menu-item-group>
+                                <el-menu-item-group>
+                                    <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
+                                </el-menu-item-group>
+                            </el-submenu>
+                            <el-menu-item index="/wenzhang">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">文章列表</span>
+                            </el-menu-item>
+                            <el-menu-item index="/dianpu">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">店铺信息</span>
+                            </el-menu-item>
+                            <el-menu-item index="/user_msg">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">用户管理</span>
+                            </el-menu-item>
+                            <el-menu-item index="/kefu">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">客服</span>
+                            </el-menu-item>
+                        </el-menu>
+                        <ul class="sd_deeett">
+                            <li @click="out_back">
+                                退出登录
 
-
-
-
-
-
-<el-menu-item index="/wenzhang">
-    <i class="el-icon-menu"></i>
-    <span slot="title">文章列表</span>
-</el-menu-item>
-
-
-<el-menu-item index="/dianpu">
-    <i class="el-icon-menu"></i>
-    <span slot="title">店铺信息</span>
-</el-menu-item>
-
-<el-menu-item index="/user_msg">
-    <i class="el-icon-menu"></i>
-    <span slot="title">用户管理</span>
-</el-menu-item>
-
-
-<el-menu-item index="/kefu">
-    <i class="el-icon-menu"></i>
-    <span slot="title">客服</span>
-</el-menu-item>
-
-
-</el-menu>
-
-
-
-
-<ul class="sd_deeett">
-    <li @click="out_back">
-        退出登录
-
-    </li>
-</ul>
-
-
-</div>
-</el-aside>
-<el-main>
-    <router-view v-wechat-title="$route.meta.title" />
-</el-main>
-</el-container>
-</el-container>
-
-
-</div>
+                            </li>
+                        </ul>
+                    </div>
+                </el-aside>
+                <el-main>
+                    <router-view  />
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
 </template>
 
 <script>
-    
     export default {
         data() {
             return {
@@ -121,7 +76,7 @@
                 user_fo: ""
             }
         },
-     
+
         components: {
 
         },
@@ -142,7 +97,7 @@
             }
         },
         mounted() {
-               this.$store.dispatch('init')
+            //            this.$store.dispatch('init')
         },
     }
 

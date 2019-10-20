@@ -12,13 +12,8 @@
                 <div class="phone_er">
                     <section class="dsf_dertxc" :style="{'background-color':header.bgcolor}">
                         <zx_header :header="header" @show_img="dialogVisible_er_san=true"></zx_header>
-
-
-
                         <lunbo></lunbo>
-                         <tupian></tupian>
                     </section>
-
                     <caidan></caidan>
                    
 
@@ -42,7 +37,6 @@
     import caidan from "@/components/zx/caidan"
     import up_img from "@/components/up_img"
     import lunbo from "@/components/zx/lunbo"
-    import tupian from "@/components/zx/tupian"
     export default {
         data() {
             return {
@@ -59,8 +53,7 @@
             zx_header,
             up_img,
             caidan,
-            lunbo,
-            tupian
+            lunbo
         },
         methods: {
             queding_er(data) {

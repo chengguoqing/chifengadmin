@@ -1448,3 +1448,9 @@ a:hover {
 .kx {
     vertical-align: bottom
 }
+.row{
+    display: flex
+}
+.col{
+    flex: 1
+}

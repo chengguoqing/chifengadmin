@@ -1,46 +1,30 @@
-<!--上传图片-->
+<!--全局上传图片-->
 <template>
-	<div class="sd_uo_et">
-	<el-tabs v-model="activeName" >
-         <el-tab-pane name="my_img" label="我的图片" >
-        <section class="modal-body">
-            <section class="sd_j_dert pt20">
-                   <el-upload
-                              class="fl mr15"
-action="/comm/tukuimg"
-  list-type="picture-card"
-  name="image"
-  :on-success="handleAvatarSuccess"                 
-                           >
-  <i class="el-icon-plus"></i>
-</el-upload>
-                <section class="pr add_img_dr fl yj4" :class="sd.cls"  v-for="sd in imageUrl" @click="sd_sdff(sd)">
-                      <img :src="sd.path">
-                     <img src="../assets/img/check.png" class="gou_deeet">
+    <div class="sd_uo_et">
+        <el-tabs v-model="activeName">
+            <el-tab-pane name="my_img" label="我的图片">
+                <section class="modal-body">
+                    <section class="sd_j_dert pt20">
+                        <el-upload class="fl mr15" action="http://duxinggj.com/comm/tukuimg" list-type="picture-card" name="image" :on-success="handleAvatarSuccess">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <section class="pr add_img_dr fl yj4" :class="sd.cls" v-for="sd in imageUrl" @click="sd_sdff(sd)">
+                            <img :src="sd.path">
+                            <img src="@/assets/img/check.png" class="gou_deeet">
+                        </section>
+                    </section>
                 </section>
-            </section>
-        </section>
-  
-             
-             <div class="block cen mt20">
-    <el-pagination :page-size="14" @current-change="handleCurrentChange" layout="total, prev, pager, next" :total="total">
-    </el-pagination>
-</div>
-    </el-tab-pane>
-  
-
-        
-        
-   
-  </el-tabs>
-
-        
-    <div  class="dialog-footer tr">
-  
-    <el-button @click="$emit('close_s')">取 消</el-button>
-    <el-button type="primary" @click="quers_d">确 定</el-button>
-  </div>
-	</div>
+                <div class="block cen mt20">
+                    <el-pagination :page-size="14" @current-change="handleCurrentChange" layout="total, prev, pager, next" :total="total">
+                    </el-pagination>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+        <div class="dialog-footer tr">
+            <el-button @click="$emit('close_s')">取 消</el-button>
+            <el-button type="primary" @click="quers_d">确 定</el-button>
+        </div>
+    </div>
 </template>
 <script>
     export default {
@@ -49,7 +33,7 @@ action="/comm/tukuimg"
         },
         data() {
             return {
-                total:1,
+                total: 1,
                 activeName: 'my_img',
                 dialogImageUrl: '',
                 dialogVisible: false,

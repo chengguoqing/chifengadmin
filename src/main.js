@@ -13,7 +13,7 @@ import VueParticles from 'vue-particles'
 import VueCookies from 'vue-cookies'
 import SlideVerify from 'vue-monoplasty-slide-verify';
 import VueAMap from 'vue-amap';
-
+import zidingy from "@/components/zidingy.js"
 Vue.use(SlideVerify);
 Vue.use(VueParticles)
 Vue.use(VueCookies)
@@ -22,6 +22,7 @@ Vue.use(VueWechatTitle)
 Vue.config.productionTip = false
 import 'vant/lib/index.css';
 Vue.use(Vant);
+Vue.use(zidingy);
 Vue.use(public_c);
   import dx_row from "@/components/dx_row.js"
 Vue.use(dx_row)
@@ -32,22 +33,12 @@ VueAMap.initAMapApiLoader({
     // 默认高德 sdk 版本为 1.4.4
     v: '1.4.4'
 });
-
 import VueQuillEditor from 'vue-quill-editor'
-
 // require styles
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-
 Vue.use(VueQuillEditor)
-
-
-
-
-
-
-
 router.beforeEach((to, from, next) => {
     if (to.path == "/admin" && VueCookies.get("user_id")) {
         next({
@@ -55,7 +46,6 @@ router.beforeEach((to, from, next) => {
         })
         return
     }
-
     if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
         if (VueCookies.get("user_id")) {
             next();
@@ -71,9 +61,7 @@ router.beforeEach((to, from, next) => {
         next();
     }
 
-
 })
-
 
 new Vue({
     store,

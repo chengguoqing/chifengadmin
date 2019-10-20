@@ -90,3 +90,35 @@
 .sd_jh_wer.ab {
     width: 1200px;
 }
+
+
+
+.czjzer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.el-dialog__wrapper,
+.el-popover {
+    z-index: 10000 !important
+}
+
+.el-row {
+    margin: 0 !important
+}
+
+.ssd_deert {
+    height: 100px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 1px solid #e0e0e0
+}
+
+.ssd_deert.act {
+    border-color: #155bd4
+}
+
+.ssd_deert p {
+    margin-top: 8px;
+}
