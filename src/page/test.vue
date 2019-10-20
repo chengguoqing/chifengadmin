@@ -1,48 +1,69 @@
 <template>
-    <div>
-
+    <div class="ssddf_deeert">
+        <el-tree :data="data" show-checkbox default-expand-all node-key="id" ref="tree" highlight-current :props="defaultProps">
+        </el-tree>
 
     </div>
 </template>
 <script>
-    import gupiao from "@/assets/js/dongfang.js"
     export default {
         data() {
             return {
-
+                data: [{
+                    id: 1,
+                    label: '一级 1',
+                    children: [{
+                        id: 4,
+                        label: '二级 1-1',
+                        children: [{
+                            id: 9,
+                            label: '三级 1-1-1'
+                        }, {
+                            id: 10,
+                            label: '三级 1-1-2'
+                        }]
+                    }]
+                }, {
+                    id: 2,
+                    label: '一级 2',
+                    children: [{
+                        id: 5,
+                        label: '二级 2-1'
+                    }, {
+                        id: 6,
+                        label: '二级 2-2'
+                    }]
+                }, {
+                    id: 3,
+                    label: '一级 3',
+                    children: [{
+                        id: 7,
+                        label: '二级 3-1'
+                    }, {
+                        id: 8,
+                        label: '二级 3-2'
+                    }]
+                }],
+                defaultProps: {
+                    children: 'children',
+                    label: 'label'
+                }
             }
         },
         components: {
 
         },
         methods: {
-            getdata(data) {
-                this.mairu = []
-                this.maichu = []
-                this.mairujiner = 0
-                this.maichuiner = 0
-                data.map(a => {
-                    if (a.wtfx == "证券买入") {
-                        this.mairu.push(a)
-                        this.mairujiner += parseFloat(a.cjje)
-                    } else if (a.wtfx == "证券卖出") {
-                        this.maichu.push(a)
-                        this.maichuiner += parseFloat(a.cjje)
-                    }
-                })
 
-            },
         },
-            mounted() {
-                let sd_e = new this.getdata(gupiao.gupiao_e)
-                console.log(sd_e.maichuiner-sd_e.mairujiner);
+        mounted() {
 
 
-            },
-        }
+        },
+    }
 
 </script>
-<style scoped>
+<style>
 
 
 </style>

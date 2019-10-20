@@ -35,7 +35,6 @@
                     </section>
                     <section class="col pl10">
                         <el-input placeholder="链接地址" v-model="sd.url"></el-input>
-
                     </section>
                     <i class="el-icon-error fz26 closerrttsw" @click="deleer(idx)"></i>
                 </section>
@@ -61,9 +60,6 @@
                     <section v-if="gousw==2" class="ssd_jh_deeert" :style="{'margin-top':from.marginTop+'px'}">
                         <img :src="sd.fm" v-for="sd in from.data" class="cz" :style="{height:from.height+'px','width':from.width+'px','margin-left':from.marginLeft+'px'}">
                     </section>
-
-
-
                 </section>
                 <msg v-else>点击编辑广告位<br>建议尺寸750x300</msg>
             </section>

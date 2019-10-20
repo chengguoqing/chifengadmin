@@ -21,19 +21,15 @@
     <el-card shadow="never" class="mt20" >
       <p class="fz16">基本信息</p>
      <section class="sd_jh_wer mt40">
-        
-       
             <el-form-item label="商品名" prop="name">
                 <el-input placeholder="" v-model="form.name" ></el-input>
             </el-form-item>
-         
-              <el-form-item label="分享描述" prop="fxms">
+            <el-form-item label="分享描述" prop="fxms">
                 <el-input placeholder="" v-model="form.fxms"></el-input>
                   <section class="fz12 z9 hg_deet">
                     微信分享给好友时会显示，建议36个字以内<span class="ls sz" @click="dialogVisible_er=true;sd_ff=1">查看示例</span>
                     </section>
             </el-form-item>
-            
              <el-form-item label="商品图" prop="spt">
                  <el-form-item>
                      <section class="pr df_jh_dert mb10" v-for="(sd,idx) in form.spt">
@@ -53,8 +49,6 @@
 
         </el-form-item>
             </el-form-item>
-         
-         
               <el-form-item label="价格-库存" prop="jiage">
                <el-row >
                    <el-col :span="8">

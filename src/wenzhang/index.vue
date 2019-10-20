@@ -24,8 +24,6 @@
    <a class="el-button el-button--text el-button--small fz12" :href="base_url+'wenzhang?id='+scope.row.id" target="view_window">浏览</a> 
     <el-button type="text" size="small" @click="hf('add_wz',{id:scope.row.id})">编辑</el-button> 
   <el-button type="text" size="small" @click="del_user('wenzhang/wzact',scope.row.id)">删除</el-button> 
-
-                  
         						</template>
 </el-table-column>
 </el-table>

@@ -1,5 +1,5 @@
-var url_d = "http://192.168.1.100:8360/"
-url_d = "http://duxinggj.com/"
+var url_d = "http://192.168.1.102:8360/"
+//url_d = "http://duxinggj.com/"
 import router from './router'
 var wx = require('weixin-js-sdk');
 import axios from "axios"
@@ -22,15 +22,16 @@ export default {
                 axios({
                     method: 'post',
                     url: url_d + url,
-                    data: sd_df
+                    data: dtat
                 }).then((res) => {
+                    console.log(res.data);
                     sd_Df = res
-                    var decrypt = CryptoJS.AES.decrypt(res.data.data, CryptoJS.enc.Utf8.parse(key), {
-                        mode: CryptoJS.mode.ECB,
-                        padding: CryptoJS.pad.Pkcs7
-                    });
-                    decrypt = decrypt.toString(CryptoJS.enc.Utf8)
-                    resolve(JSON.parse(decrypt))
+//                    var decrypt = CryptoJS.AES.decrypt(res.data.data, CryptoJS.enc.Utf8.parse(key), {
+//                        mode: CryptoJS.mode.ECB,
+//                        padding: CryptoJS.pad.Pkcs7
+//                    });
+//                    decrypt = decrypt.toString(CryptoJS.enc.Utf8)         
+                    resolve(res.data.data)
 
                 }).catch(err => {
                     if (sd_Df.data.code == 0) {
