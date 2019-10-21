@@ -1,4 +1,4 @@
-var url_d = "http://192.168.1.102:8360/"
+var url_d = "http://192.168.1.200:8360/"
 //url_d = "http://duxinggj.com/"
 import router from './router'
 var wx = require('weixin-js-sdk');

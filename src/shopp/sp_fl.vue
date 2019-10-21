@@ -9,13 +9,9 @@
             </section>
             <el-tree :data="data" :props="defaultProps">
                 <span class="custom-tree-node fz14 w100 f_b" slot-scope="{ node, data }">
-                    <img src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/63e5087d-cc8e-4756-a686-841010a0fc8d.png" class="ssd_derettw cz"> {{node.label}}
+                    <img :src="data.url" class="ssd_derettw cz"> {{node.label}}
                       <span class="fr fz12 ls">修改</span>
                 </span>
-                
-              
-
-
             </el-tree>
 
 
@@ -62,6 +58,41 @@
     </div>
 </template>
 <script>
+/*    [{
+    label: '一级 1',
+    children: [{
+    label: '二级 1-1',
+    children: [{
+    label: '三级 1-1-1'
+    }]
+    }]
+    }, {
+    label: '一级 2',
+    children: [{
+    label: '二级 2-1',
+    children: [{
+    label: '三级 2-1-1'
+    }]
+    }, {
+    label: '二级 2-2',
+    children: [{
+    label: '三级 2-2-1'
+    }]
+    }]
+    }, {
+    label: '一级 3',
+    children: [{
+    label: '二级 3-1',
+    children: [{
+    label: '三级 3-1-1'
+    }]
+    }, {
+    label: '二级 3-2',
+    children: [{
+    label: '三级 3-2-1'
+    }]
+    }]
+    }]*/
     import {
         playlistMixin
     } from "@/biaoge.js"
@@ -80,41 +111,7 @@
                     fjs: "",
                     type: 1
                 },
-                data: [{
-                    label: '一级 1',
-                    children: [{
-                        label: '二级 1-1',
-                        children: [{
-                            label: '三级 1-1-1'
-                        }]
-                    }]
-                }, {
-                    label: '一级 2',
-                    children: [{
-                        label: '二级 2-1',
-                        children: [{
-                            label: '三级 2-1-1'
-                        }]
-                    }, {
-                        label: '二级 2-2',
-                        children: [{
-                            label: '三级 2-2-1'
-                        }]
-                    }]
-                }, {
-                    label: '一级 3',
-                    children: [{
-                        label: '二级 3-1',
-                        children: [{
-                            label: '三级 3-1-1'
-                        }]
-                    }, {
-                        label: '二级 3-2',
-                        children: [{
-                            label: '三级 3-2-1'
-                        }]
-                    }]
-                }],
+                data: [],
                 fenlert: [],
                 fenlertb: [],
                 defaultProps: {
@@ -164,6 +161,11 @@
                     page: 1
                 })
                 this.fenlert = this.fenlert.data
+                this.fenlert.map(a=>{
+                    a.children= []
+                    a.label = a.name
+                    this.data.push(a)
+                })
             },
             async getjib(ddfee) {
                 this.ssd_e =1

@@ -1,10 +1,6 @@
 
-const CompressionPlugin = require('compression-webpack-plugin')
-
 const IS_PROD = process.env.NODE_ENV === 'production'
 const cdnDomian = 'https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com'
-
-
 var sd_dert = {
     baseUrl: './',
      publicPath: IS_PROD ? cdnDomian : '/',
