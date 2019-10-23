@@ -1,86 +1,115 @@
 <template>
     <div>
         <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item>微页面</el-breadcrumb-item>
+            <el-breadcrumb-item>首页轮播图</el-breadcrumb-item>
         </el-breadcrumb>
-
-
         <section class="btm mt10 pt20">
+            <p>
+                <el-button type="primary" @click="dialogVisible=true">添加轮播图</el-button>
+            </p>
+            <el-table class="mt20" :data="tableData" style="width: 100%" highlight-current-row>
+                <el-table-column type="index" label="序号"></el-table-column>
+                <el-table-column label="封面">
+                    <template slot-scope="scope">
+                        <img :src="scope.row.imgurl" class="fengmewer">
+                    </template>
+                </el-table-column>
 
-            <div class="bianji_srt">
+                <el-table-column label="跳转地址" prop="rurl"></el-table-column>
+                <el-table-column label="添加时间">
 
-                <div class="phone_er">
-                    <section class="dsf_dertxc" :style="{'background-color':header.bgcolor}">
-                        <zx_header :header="header" @show_img="dialogVisible_er_san=true"></zx_header>
-                        <lunbo></lunbo>
-                    </section>
-                    <caidan></caidan>
-                   
+                    <template slot-scope="scope">
+                        <span v-html="time_d(scope.row.addtime)"></span>
+                    </template>
+                </el-table-column>
 
-
-                </div>
-
-            </div>
+                <el-table-column label="操作" width="120">
+                    <template slot-scope="scope">
+                        <el-button type="text" size="small" @click="del_user('shopp/indexbanner',scope.row.id)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
 
         </section>
 
 
 
 
-        <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible_er_san" width="890px">
-            <up_img @close_s="dialogVisible_er_san=false" @queding="queding_er" v-if="dialogVisible_er_san"></up_img>
+
+        <el-dialog class="sddf_drrt" title="添加轮播图" :visible.sync="dialogVisible" width="600px">
+            <el-form class="mt10" label-width="80px">
+
+                <el-form-item label="上传封面">
+                    <section class="avatar-uploader cz f_b br yj4 sz pr" @click="dialogVisible_er=true">
+                        <img v-if="form_d.imgurl" :src="form_d.imgurl" class="avatar cz">
+                        <i v-else class="el-icon-plus avatar-uploader-icon df_deert"></i>
+                        <i class="el-icon-error closwertx" v-if="form_d.imgurl" @click.stop="form_d.imgurl=''"></i>
+                    </section>
+
+                </el-form-item>
+                <el-form-item label="跳转地址">
+                    <el-input placeholder="分类名称" v-model="form_d.rurl" size="small"></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="add_user">确 定</el-button>
+            </span>
         </el-dialog>
+
+        <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible_er" width="890px">
+            <dxupimg @close_s="dialogVisible_er=false" @queding="queding" :is_d="false" v-if="dialogVisible"></dxupimg>
+        </el-dialog>
+
     </div>
 </template>
 <script>
-    import zx_header from "@/components/zx/header"
-    import caidan from "@/components/zx/caidan"
-    import up_img from "@/components/up_img"
-    import lunbo from "@/components/zx/lunbo"
+    import {
+        playlistMixin
+    } from "@/biaoge.js"
     export default {
         data() {
             return {
-                dialogVisible_er_san: false,
-                header: {
-                    name: "独行工匠2",
-                    miaosu: "",
-                    fxtp: "https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/e8af3a9c-a3d2-4683-b970-252df761cc21.png",
-                    bgcolor: "#f6f6f6"
+                dialogVisible: false,
+                dialogVisible_er: false,
+                form_d: {
+                    imgurl: "",
+                    rurl: ""
                 }
             }
         },
+        mixins: [playlistMixin], //注册mixins
         components: {
-            zx_header,
-            up_img,
-            caidan,
-            lunbo
+
         },
         methods: {
-            queding_er(data) {
-                this.dialogVisible_er_san = false
-                this.header.fxtp = data
+            async add_user() {
+                this.form_d.type = 1
+                await this.post("shopp/indexbanner", this.form_d)
+                this.dialogVisible = false
+                this.init()
+            },
+            queding(e) {
+                this.form_d.imgurl = e
+                this.dialogVisible_er = false
+
+            },
+            init() {
+                this.getuser("shopp/indexbanner", {
+                    type: 3
+                })
             }
         },
         mounted() {
-
+            this.init()
         },
     }
 
 </script>
 <style scoped>
-    .bianji_srt {
-        width: 800px;
-        margin: auto;
-    }
-
-    .phone_er {
-        width: 375px;
-        border: 1px solid #e0e0e0;
-
-    }
-
-    .dsf_dertxc {
-        min-height: 460px;
+    .fengmewer {
+        width: 100px;
+        height: 50px;
     }
 
 </style>

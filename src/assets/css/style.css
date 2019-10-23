@@ -122,6 +122,14 @@
 .ssd_deert p {
     margin-top: 8px;
 }
-.el-select-dropdown.el-popper{
+
+.el-select-dropdown.el-popper {
     z-index: 99999 !important
+}
+
+.closwertx {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 18px;
 }

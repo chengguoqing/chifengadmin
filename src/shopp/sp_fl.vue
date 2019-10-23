@@ -5,12 +5,14 @@
         </el-breadcrumb>
         <div class="btm mt10 pt20">
             <section class="tr">
-                <el-button type="primary" @click="dialogVisible=true">添加分类</el-button>
+                <el-button type="primary" @click="getji();dialogVisible=true">添加分类</el-button>
             </section>
             <el-tree :data="data" :props="defaultProps">
                 <span class="custom-tree-node fz14 w100 f_b" slot-scope="{ node, data }">
-                    <img :src="data.url" class="ssd_derettw cz"> {{node.label}}
-                      <span class="fr fz12 ls">修改</span>
+                    <img :src="data.url" class="ssd_derettw cz" v-if="data.url"> {{data.name}}
+                    <span class="fr fz12 ls ml20" @click="deled(data.code,data.id)">删除</span>
+                    <!--                    <span class="fr fz12 ls">修改</span>-->
+
                 </span>
             </el-tree>
 
@@ -25,7 +27,7 @@
                                 <el-option :label="sd.name" :value="sd.id" v-for="sd in fenlert"></el-option>
                             </el-select>
                         </el-col>
-                        <el-col :span="12">
+                        <el-col :span="12" v-if="ssd_e>=1">
                             <el-select v-model="form_d.fjs" placeholder="上级分类名称" size="small" @change="getjic">
                                 <el-option :label="sd.name" :value="sd.id" v-for="sd in fenlertb"></el-option>
                             </el-select>
@@ -36,7 +38,7 @@
                     <section class="avatar-uploader cz f_b br yj4 sz pr" @click="dialogVisible_er=true">
                         <img v-if="form_d.url" :src="form_d.url" class="avatar cz">
                         <i v-else class="el-icon-plus avatar-uploader-icon df_deert"></i>
-                        <i class="el-icon-error closwertx" v-if="form_d.url" @click.stop ="form_d.url=''"></i>
+                        <i class="el-icon-error closwertx" v-if="form_d.url" @click.stop="form_d.url=''"></i>
                     </section>
 
                 </el-form-item>
@@ -58,41 +60,6 @@
     </div>
 </template>
 <script>
-/*    [{
-    label: '一级 1',
-    children: [{
-    label: '二级 1-1',
-    children: [{
-    label: '三级 1-1-1'
-    }]
-    }]
-    }, {
-    label: '一级 2',
-    children: [{
-    label: '二级 2-1',
-    children: [{
-    label: '三级 2-1-1'
-    }]
-    }, {
-    label: '二级 2-2',
-    children: [{
-    label: '三级 2-2-1'
-    }]
-    }]
-    }, {
-    label: '一级 3',
-    children: [{
-    label: '二级 3-1',
-    children: [{
-    label: '三级 3-1-1'
-    }]
-    }, {
-    label: '二级 3-2',
-    children: [{
-    label: '三级 3-2-1'
-    }]
-    }]
-    }]*/
     import {
         playlistMixin
     } from "@/biaoge.js"
@@ -112,8 +79,14 @@
                     type: 1
                 },
                 data: [],
-                fenlert: [],
-                fenlertb: [],
+                fenlert: [{
+                    id: '',
+                    name: '一级类目'
+                }],
+                fenlertb: [{
+                    id: '',
+                    name: '二级类目'
+                }],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
@@ -125,12 +98,22 @@
         },
         mixins: [playlistMixin], //注册mixins
         methods: {
+            init() {
+                this.fenlert = [{
+                    id: '',
+                    name: '一级类目'
+                }]
+                this.fenlertb = [{
+                    id: '',
+                    name: '二级类目'
+                }]
+            },
             sousuode() {
                 this.getuser("shopp/get_sp", {
                     name: this.name_dx
                 })
             },
-            add_user(tabname) {
+            async add_user(tabname) {
                 if (!this.form_d.name) {
                     this.$message.error('请输入分类名称');
                     return
@@ -142,7 +125,8 @@
                 if (this.ssd_e == 2) {
                     this.form_d.tabname = 'fenleisan'
                 }
-                this.post("shopp/fenlei", this.form_d)
+                await this.post("shopp/fenlei", this.form_d)
+                this.gtelist()
                 this.dialogVisible = false
             },
             bianji_e(e) {
@@ -155,35 +139,54 @@
                 this.dialogVisible_er = false
             },
             async getji(ddfee) {
-                this.fenlert = await this.post("shopp/fenlei", {
+               this.fenlert = [{
+                    id: '',
+                    name: '一级类目'
+                }]
+                let ssd_deer = await this.post("shopp/fenlei", {
                     tabname: 'fenlei',
                     type: 3,
                     page: 1
                 })
-                this.fenlert = this.fenlert.data
-                this.fenlert.map(a=>{
-                    a.children= []
-                    a.label = a.name
-                    this.data.push(a)
+                ssd_deer.data.map(a => {
+                    this.fenlert.push(a)
                 })
             },
             async getjib(ddfee) {
-                this.ssd_e =1
-                this.form_d.fjs=''
-                this.fenlertb = await this.post("shopp/fenlei", {
+                if (!this.form_d.fj) {
+                    this.ssd_e = 0
+                    return
+                }
+                this.fenlertb = [{
+                    id: '',
+                    name: '二级类目'
+                }]
+                this.ssd_e = 1
+                this.form_d.fjs = ''
+                let ssd_dertx = await this.post("shopp/fenlei", {
                     tabname: 'fenleier',
                     type: 3,
                     page: 1,
                     fj: this.form_d.fj
                 })
-                this.fenlertb = this.fenlertb.data
+                ssd_dertx.data.map(a => {
+                    this.fenlertb.push(a)
+                })
             },
             getjic(ddfee) {
-                 this.ssd_e =2
+                this.ssd_e = 2
+            },
+            async gtelist() {
+                let sddert = await this.post("shopp/getfenlei")
+                this.data = sddert
+            },
+            async deled(code,id) {
+                await this.post("shopp/delect",{code:code,id:id})
+                this.gtelist()
             }
         },
         mounted() {
-            this.getji()
+            this.gtelist()
         },
     }
 
@@ -204,11 +207,7 @@
         width: 30px;
         height: 30px;
     }
-    .closwertx{
-        position: absolute;
-        right: -10px;
-        top: -10px;
-        font-size: 18px;
-    }
+
+   
 
 </style>

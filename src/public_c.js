@@ -1,10 +1,11 @@
-var url_d = "http://192.168.1.200:8360/"
+var url_d = "http://192.168.1.102:8360/"
 //url_d = "http://duxinggj.com/"
 import router from './router'
 var wx = require('weixin-js-sdk');
 import axios from "axios"
 var CryptoJS = require("crypto-js");
 var key = "duxinggongchengguoqingguangzoulg"
+import { Message } from 'element-ui';
 export default {
     install(Vue) {
         Vue.prototype.base_url = "http://127.0.0.1:8360/"
@@ -26,11 +27,19 @@ export default {
                 }).then((res) => {
                     console.log(res.data);
                     sd_Df = res
-//                    var decrypt = CryptoJS.AES.decrypt(res.data.data, CryptoJS.enc.Utf8.parse(key), {
-//                        mode: CryptoJS.mode.ECB,
-//                        padding: CryptoJS.pad.Pkcs7
-//                    });
-//                    decrypt = decrypt.toString(CryptoJS.enc.Utf8)         
+                    if (res.data.code < 0) {
+                        Message.error(res.data.msg);
+                        return
+                    }
+                    if (res.data.code == 1) { //提示
+                        Message.success(res.data.msg);
+                        return
+                    }
+                    //                    var decrypt = CryptoJS.AES.decrypt(res.data.data, CryptoJS.enc.Utf8.parse(key), {
+                    //                        mode: CryptoJS.mode.ECB,
+                    //                        padding: CryptoJS.pad.Pkcs7
+                    //                    });
+                    //                    decrypt = decrypt.toString(CryptoJS.enc.Utf8)         
                     resolve(res.data.data)
 
                 }).catch(err => {

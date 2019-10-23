@@ -5,7 +5,7 @@
             <el-tab-pane name="my_img" label="我的图片">
                 <section class="modal-body">
                     <section class="sd_j_dert pt20">
-                        <el-upload class="fl mr15" action="http://192.168.1.200:8360/comm/tukuimg" list-type="picture-card" name="image" :on-success="handleAvatarSuccess">
+                        <el-upload multiple class="fl mr15" action="http://192.168.1.102:8360/comm/tukuimg" list-type="picture-card" name="image" :on-success="handleAvatarSuccess">
                             <i class="el-icon-plus"></i>
                         </el-upload>
                         <section class="pr add_img_dr fl yj4" :class="sd.cls" v-for="sd in imageUrl" @click="sd_sdff(sd)">

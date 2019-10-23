@@ -1,13 +1,13 @@
 <!--添加商品-->
 <template>
-	<div class="dsf_deertt">
-	<el-breadcrumb separator-class="el-icon-arrow-right">
-  <el-breadcrumb-item :to="{ path: '/shopp/sp_list' }">商品</el-breadcrumb-item>
-  <el-breadcrumb-item>添加商品</el-breadcrumb-item>
-</el-breadcrumb>
-<section class="btm mt10 pt20">
-    
-<!--
+    <div class="dsf_deertt">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/shopp/sp_list' }">商品</el-breadcrumb-item>
+            <el-breadcrumb-item>添加商品</el-breadcrumb-item>
+        </el-breadcrumb>
+        <section class="btm mt10 pt20">
+
+            <!--
     <section class="sd_jh_derrt"> 
     <el-steps :active="active" finish-status="success">
   <el-step title="编辑基本信息"></el-step>
@@ -17,295 +17,309 @@
         </section>
     
 -->
-     <el-form ref="form" :model="form" label-width="100px" :rules="rules">
-    <el-card shadow="never" class="mt20" >
-      <p class="fz16">基本信息</p>
-     <section class="sd_jh_wer mt40">
-            <el-form-item label="商品名" prop="name">
-                <el-input placeholder="" v-model="form.name" ></el-input>
-            </el-form-item>
-            <el-form-item label="分享描述" prop="fxms">
-                <el-input placeholder="" v-model="form.fxms"></el-input>
-                  <section class="fz12 z9 hg_deet">
-                    微信分享给好友时会显示，建议36个字以内<span class="ls sz" @click="dialogVisible_er=true;sd_ff=1">查看示例</span>
+            <el-form ref="form" :model="form" label-width="100px" :rules="rules">
+                <el-card shadow="never" class="mt20">
+                    <p class="fz16">基本信息</p>
+                    <section class="sd_jh_wer mt40">
+                        <el-form-item label="商品名" prop="name">
+                            <el-input placeholder="" v-model="form.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="分享描述" prop="fxms">
+                            <el-input placeholder="" v-model="form.fxms"></el-input>
+                            <section class="fz12 z9 hg_deet">
+                                微信分享给好友时会显示，建议36个字以内<span class="ls sz" @click="dialogVisible_er=true;sd_ff=1">查看示例</span>
+                            </section>
+                        </el-form-item>
+                        <el-form-item label="商品图" prop="spt">
+                            <el-form-item>
+                                <section class="pr df_jh_dert mb10" v-for="(sd,idx) in form.spt">
+
+                                    <i class="el-icon-error ug_dertt ls sz" @click="close_ds(idx)"></i>
+                                    <img :src="sd" class="w100 h100">
+                                </section>
+
+                                <section class="avatar-uploader cz f_b br yj4 sz mb10" @click="dialogVisible=true">
+
+                                    <i class="el-icon-plus avatar-uploader-icon df_deert"></i>
+                                </section>
+
+                                <p class="fz12 z9 hg_deet">
+                                    建议尺寸：800*800像素，你可以拖拽图片调整顺序，最多上传15张
+                                </p>
+
+                            </el-form-item>
+                        </el-form-item>
+                        <el-form-item label="价格-库存" prop="jiage">
+                            <el-row>
+                                <el-col :span="8">
+                                    <el-input placeholder="请输入价格" class="w100" v-model="form.jiage"></el-input>
+                                </el-col>
+                                <el-col :span="8" class="pl20">
+                                    <el-input placeholder="请输入库存" class="w100" v-model="form.kucun"></el-input>
+                                </el-col>
+                                <el-col :span="8" class="pl20">
+                                    <el-input placeholder="请输入运费价格" class="w100" v-model="form.yunfei"></el-input>
+                                </el-col>
+                            </el-row>
+
+                        </el-form-item>
                     </section>
-            </el-form-item>
-             <el-form-item label="商品图" prop="spt">
-                 <el-form-item>
-                     <section class="pr df_jh_dert mb10" v-for="(sd,idx) in form.spt">
-    
-                         <i class="el-icon-error ug_dertt ls sz" @click="close_ds(idx)"></i>
-                         <img :src="sd" class="w100 h100">
-                    </section>
-                     
-                     <section  class="avatar-uploader cz f_b br yj4 sz mb10" @click="dialogVisible=true" >
 
-                <i class="el-icon-plus avatar-uploader-icon df_deert"></i>
-            </section>
+                    <el-form-item label="商品规格">
 
-           <p class="fz12 z9 hg_deet">
-        建议尺寸：800*800像素，你可以拖拽图片调整顺序，最多上传15张
-    </p>
 
-        </el-form-item>
-            </el-form-item>
-              <el-form-item label="价格-库存" prop="jiage">
-               <el-row >
-                   <el-col :span="8">
-                       <el-input placeholder="请输入价格" class="w100" v-model="form.jiage" ></el-input>
-                    </el-col>
-                <el-col :span="8" class="pl20"> <el-input placeholder="请输入库存" class="w100"  v-model="form.kucun" ></el-input></el-col>
-                  <el-col :span="8" class="pl20"> <el-input placeholder="请输入运费价格" class="w100"  v-model="form.yunfei" ></el-input></el-col>  
-               </el-row>
-                  
-            </el-form-item>
-         </section>
-         
-            <el-form-item label="商品规格">
 
-                  
+                        <section class="br pd fz12 pm10" v-if="sku.length>0">
 
-                <section class="br pd fz12 pm10" v-if="sku.length>0">
-             
-                    <section v-for="(sd,ide) in sku">
-                <section class="pt10 pm10">
-                    规格名：  <span class="ghuiu_eer f_b pr">  
-                    <el-input placeholder="请输入" v-model="sd.k" ></el-input>
-                    <i class="el-icon-circle-close close_eert" @click="del_guigexm(ide)"></i>
-                    </span>
-                    <span class="ls ml20" v-if="ide==0"><el-checkbox v-model="checked_khj_d" class="ls">添加规格图片</el-checkbox></span>
-                </section>
-                <section>
-                    <span class="fl">规格值：</span> 
-                    <div class="ghuiu_eer f_b ab mr10 pr fl mb10"  v-for="(sf,idx) in sd.v">  
-                    <el-input placeholder="请输入" v-model="sf.name"></el-input>
-                        <i class="el-icon-circle-close close_eert" @click="del_guz(sd.v,idx)"></i>
-                        <section v-if="ide==0&&checked_khj_d" class="sd_jh_dertx pr" @click="dialogVisible_er_san=true;naum_sd=idx">
-                            <span class="sd_jh_derder"></span>
-                            <section class="sd_jh_dff cz_w">
-                                <img :src="sf.fmt" v-if="sf.fmt">
-                               <i class="el-icon-plus avatar-uploader-icon mt10 " v-else></i>
-                                
+                            <section v-for="(sd,ide) in sku">
+                                <section class="pt10 pm10">
+                                    规格名： <span class="ghuiu_eer f_b pr">
+                                        <el-input placeholder="请输入" v-model="sd.k"></el-input>
+                                        <i class="el-icon-circle-close close_eert" @click="del_guigexm(ide)"></i>
+                                    </span>
+                                    <span class="ls ml20" v-if="ide==0">
+                                        <el-checkbox v-model="checked_khj_d" class="ls">添加规格图片</el-checkbox>
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="fl">规格值：</span>
+                                    <div class="ghuiu_eer f_b ab mr10 pr fl mb10" v-for="(sf,idx) in sd.v">
+                                        <el-input placeholder="请输入" v-model="sf.name"></el-input>
+                                        <i class="el-icon-circle-close close_eert" @click="del_guz(sd.v,idx)"></i>
+                                        <section v-if="ide==0&&checked_khj_d" class="sd_jh_dertx pr" @click="dialogVisible_er_san=true;naum_sd=idx">
+                                            <span class="sd_jh_derder"></span>
+                                            <section class="sd_jh_dff cz_w">
+                                                <img :src="sf.fmt" v-if="sf.fmt">
+                                                <i class="el-icon-plus avatar-uploader-icon mt10 " v-else></i>
+
+                                            </section>
+                                        </section>
+
+                                    </div>
+
+                                    <span class="ls sz fl" @click="gui_dsd(sd.v)">添加规格值</span>
+                                    <p class="qc"></p>
+                                </section>
                             </section>
                         </section>
-                        
-                    </div>
-                    
-                    <span class="ls sz fl" @click="gui_dsd(sd.v)">添加规格值</span>
-                    <p class="qc"></p>
-                </section>    
-                    </section>
-</section>
-                
-                 <el-button type="primary" class="mt10" @click="add_guigexm">添加规格项目</el-button>
-                
-                <p class="z9 fz12">如有颜色、尺码等多种规格，请添加商品规格</p>
-            </el-form-item>
-                
-     <el-form-item label="规格明细"  v-if="sku.length>0">
-         <section class="box cdgfsd_hjh_der" v-if="sku[0].v.length>0">
-             
-            <section class="box_a" v-for="(sd,idx) in sku" v-if="sd.v.length>0">
-                <p class="title_d">{{sd.k||'&nbsp;'}}</p>
-                
-                <section v-if="sku.length==1">
-                    
-                <ul class="sd_df_rt">
-                    <li v-for="sd in sd.v" class="cz_w w100">
-                        <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
-                    </li>
-                </ul>    
-                
-                    
-               
-                
-                </section>
-                
-                <section v-if="sku.length==2">
-                    
-                <ul class="sd_df_rt" v-if="idx==0">
-                    <li v-for="sd in sd.v" :style="{height:(sku[idx+1].v.length)*42+'px'}" class="cz_w w100">
-                        <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
-                    </li>
-                </ul>    
-                <section  v-if="idx==1">
-                <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
-                        <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
-                 </ul> 
-                </section>
-                    
-                <section  v-if="idx==2">
-                <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
-                        <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
-                 </ul> 
-                </section>
-                
-                </section>
-                <section v-if="sku.length>2">
-                <ul class="sd_df_rt" v-if="idx==0">
-                    <li v-for="sd in sd.v" :style="{height:((sku[idx+1].v.length)*42)*sku[idx+2].v.length+'px'}" class="cz_w w100">
-                        <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
-                    </li>
-                </ul>    
-                <section  v-if="idx==1">
-                <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
-                        <li v-for="sd in sd.v" :style="{height:(sku[idx+1].v.length)*42+'px'}"   class="cz_w w100">
-    <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
-    </li>
-                 </ul> 
-                </section>
-                    
-                <section  v-if="idx==2">
-                <ul class="sd_df_rt" v-for="sp in ( sku[idx-1].v.length* sku[idx-2].v.length)">
-                        <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
-                 </ul> 
-                </section>
-                
-                </section>
-                
-            </section>
-             
-            
-             <section class="box_a" >
-                    <p class="title_d">价格</p>
-                 
-                    <ul class="sd_df_rt">
-                        <li v-for="sd in sd_drtyx" class="DSf_dreet">   
-                            <el-input placeholder="" v-model="sd.jiage" ></el-input>
-                </li>
-                        
-    </ul>
-             </section>
-             
-               <section class="box_a" >
-                    <p class="title_d">库存</p>
-                 
-                    <ul class="sd_df_rt">
-                        <li v-for="sd in sd_drtyx" class="DSf_dreet">   
-                            <el-input placeholder="" v-model="sd.kucun" ></el-input>
-                </li>
-                        
-    </ul>
-             </section>
-              <section class="box_a" >
-                    <p class="title_d">成本价</p>
-                 
-                    <ul class="sd_df_rt">
-                        <li v-for="sd in sd_drtyx" class="DSf_dreet">   
-                            <el-input placeholder="" v-model="sd.cbjia" ></el-input>
-                </li>
-                        
-    </ul>
-             </section>
-                  <section class="box_a" >
-                    <p class="title_d">销量</p>
-                 
-                    <ul class="sd_df_rt">
-                        <li v-for="sd in sd_drtyx" class="DSf_dreet">   
-                          {{sd.xiaoliang}}
-                </li>
-                        
-    </ul>
-             </section>
-             
-             
 
-        </section>
-         
-  
+                        <el-button type="primary" class="mt10" @click="add_guigexm">添加规格项目</el-button>
+
+                        <p class="z9 fz12">如有颜色、尺码等多种规格，请添加商品规格</p>
+                    </el-form-item>
+
+                    <el-form-item label="规格明细" v-if="sku.length>0">
+                        <section class="box cdgfsd_hjh_der" v-if="sku[0].v.length>0">
+
+                            <section class="box_a" v-for="(sd,idx) in sku" v-if="sd.v.length>0">
+                                <p class="title_d">{{sd.k||'&nbsp;'}}</p>
+
+                                <section v-if="sku.length==1">
+
+                                    <ul class="sd_df_rt">
+                                        <li v-for="sd in sd.v" class="cz_w w100">
+                                            <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
+                                        </li>
+                                    </ul>
 
 
-</el-form-item>
-   <section class="sd_jh_wer ">
-<section @click="zedie_sz?zedie_sz=flase:zedie_sz=true" class="sz">
-    <i class="el-icon-caret-bottom"></i>
-    <span class="fz12 ls">
-                {{zedie_sz?'折叠更多设置':'更多设置'}}
-                </span>
-</section>
-
-<section class="mt20" v-if="zedie_sz">
 
 
-    <el-form-item label="商品分类">
+                                </section>
+
+                                <section v-if="sku.length==2">
+
+                                    <ul class="sd_df_rt" v-if="idx==0">
+                                        <li v-for="sd in sd.v" :style="{height:(sku[idx+1].v.length)*42+'px'}" class="cz_w w100">
+                                            <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
+                                        </li>
+                                    </ul>
+                                    <section v-if="idx==1">
+                                        <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
+                                            <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
+                                        </ul>
+                                    </section>
+
+                                    <section v-if="idx==2">
+                                        <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
+                                            <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
+                                        </ul>
+                                    </section>
+
+                                </section>
+                                <section v-if="sku.length>2">
+                                    <ul class="sd_df_rt" v-if="idx==0">
+                                        <li v-for="sd in sd.v" :style="{height:((sku[idx+1].v.length)*42)*sku[idx+2].v.length+'px'}" class="cz_w w100">
+                                            <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
+                                        </li>
+                                    </ul>
+                                    <section v-if="idx==1">
+                                        <ul class="sd_df_rt" v-for="sp in sku[idx-1].v.length">
+                                            <li v-for="sd in sd.v" :style="{height:(sku[idx+1].v.length)*42+'px'}" class="cz_w w100">
+                                                <span class="cz_a">{{sd.name||'&nbsp;'}}</span>
+                                            </li>
+                                        </ul>
+                                    </section>
+
+                                    <section v-if="idx==2">
+                                        <ul class="sd_df_rt" v-for="sp in ( sku[idx-1].v.length* sku[idx-2].v.length)">
+                                            <li v-for="sd in sd.v" v-html="sd.name||'&nbsp;'"></li>
+                                        </ul>
+                                    </section>
+
+                                </section>
+
+                            </section>
+
+
+                            <section class="box_a">
+                                <p class="title_d">价格</p>
+
+                                <ul class="sd_df_rt">
+                                    <li v-for="sd in sd_drtyx" class="DSf_dreet">
+                                        <el-input placeholder="" v-model="sd.jiage"></el-input>
+                                    </li>
+
+                                </ul>
+                            </section>
+
+                            <section class="box_a">
+                                <p class="title_d">库存</p>
+
+                                <ul class="sd_df_rt">
+                                    <li v-for="sd in sd_drtyx" class="DSf_dreet">
+                                        <el-input placeholder="" v-model="sd.kucun"></el-input>
+                                    </li>
+
+                                </ul>
+                            </section>
+                            <section class="box_a">
+                                <p class="title_d">成本价</p>
+
+                                <ul class="sd_df_rt">
+                                    <li v-for="sd in sd_drtyx" class="DSf_dreet">
+                                        <el-input placeholder="" v-model="sd.cbjia"></el-input>
+                                    </li>
+
+                                </ul>
+                            </section>
+                            <section class="box_a">
+                                <p class="title_d">销量</p>
+
+                                <ul class="sd_df_rt">
+                                    <li v-for="sd in sd_drtyx" class="DSf_dreet">
+                                        {{sd.xiaoliang}}
+                                    </li>
+
+                                </ul>
+                            </section>
+
+
+
+                        </section>
+
+
+
+
+                    </el-form-item>
+                    <section class="sd_jh_wer ">
+                        <section @click="zedie_sz?zedie_sz=flase:zedie_sz=true" class="sz">
+                            <i class="el-icon-caret-bottom"></i>
+                            <span class="fz12 ls">
+                                {{zedie_sz?'折叠更多设置':'更多设置'}}
+                            </span>
+                        </section>
+
+                        <section class="mt20" v-if="zedie_sz">
+
+
+                            <el-form-item label="商品分类">
+                            
+
+
+<el-cascader :options="options"  :props="props" v-model="form.lemu" ></el-cascader>
+
+
+                                <!--
         <el-select v-model="form.lemu" placeholder="请选择所属行业类目" class="w100">
             <el-option :label="sd.name" :value="sd.id" v-for="sd in spfl"></el-option>
         </el-select>
         <p class="fz12 z9 hg_deet">
             商品分类及类目细项，<a class="ls sz" :href="base_url+'wenzhang?id=10'" target="view_window">点此查看</a>
         </p>
-    </el-form-item>
+-->
+                            </el-form-item>
 
-    <el-form-item label="商品卖点">
-        <el-input placeholder="" v-model="form.spmd"></el-input>
-        <div class="fz12 z9 hg_deet">
-            在商品详情页标题下面展示卖点信息，建议60字以内<span class="ls sz" @click="dialogVisible_er=true;sd_ff=2">查看示例</span>
-        </div>
-    </el-form-item>
-
-
-</section>
+                            <el-form-item label="商品卖点">
+                                <el-input placeholder="" v-model="form.spmd"></el-input>
+                                <div class="fz12 z9 hg_deet">
+                                    在商品详情页标题下面展示卖点信息，建议60字以内<span class="ls sz" @click="dialogVisible_er=true;sd_ff=2">查看示例</span>
+                                </div>
+                            </el-form-item>
 
 
-    </section>
+                        </section>
 
 
-
-</el-card>
-
-<el-card shadow="never" class="mt20">
-    <p class="fz16">商品详情</p>
-    <section class="sd_jh_wer mt40 ab">
-        <fuwenben_n ref="fuwenben" :dx_text="form.xiqngqing"></fuwenben_n>
-
-    </section>
-</el-card>
+                    </section>
 
 
 
-</el-form>
+                </el-card>
 
-<section class="cen mt40">
+                <el-card shadow="never" class="mt20">
+                    <p class="fz16">商品详情</p>
+                    <section class="sd_jh_wer mt40 ab">
+                        <fuwenben_n ref="fuwenben" :dx_text="form.xiqngqing"></fuwenben_n>
 
-    <el-button type="primary" @click="submitForm">{{$route.query.id?'修改':'确定'}}</el-button>
-    <el-button type="primary" plain class="ml30">取消</el-button>
-</section>
+                    </section>
+                </el-card>
 
-</section>
 
-<el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible" width="890px">
-    <up_img @close_s="dialogVisible=false" @queding="queding" :is_d="true" v-if="dialogVisible"></up_img>
-</el-dialog>
 
-        
+            </el-form>
+
+            <section class="cen mt40">
+
+                <el-button type="primary" @click="submitForm">{{$route.query.id?'修改':'确定'}}</el-button>
+                <el-button type="primary" plain class="ml30">取消</el-button>
+            </section>
+
+        </section>
+
+        <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible" width="890px">
+            <up_img @close_s="dialogVisible=false" @queding="queding" :is_d="true" v-if="dialogVisible"></up_img>
+        </el-dialog>
+
+
         <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible_er_san" width="890px">
-    <up_img @close_s="dialogVisible_er_san=false" @queding="queding_er" v-if="dialogVisible_er_san"></up_img>
-</el-dialog>
+            <up_img @close_s="dialogVisible_er_san=false" @queding="queding_er" v-if="dialogVisible_er_san"></up_img>
+        </el-dialog>
 
-<el-dialog class="sddf_drrt" title="查看示例" :visible.sync="dialogVisible_er" width="450px">
+        <el-dialog class="sddf_drrt" title="查看示例" :visible.sync="dialogVisible_er" width="450px">
 
-    <section v-if="sd_ff==1">
-        <p class="z3 pt10 btm">将商品在微信分享给朋友时，该处填写的内容会展示在商品名称下面</p>
-        <p class="cen">
-            <img src="../assets/img/fenxiangms.png" class="ddsf_dert">
-        </p>
-
-
-    </section>
-    <section v-if="sd_ff==2">
-
-        <p class="z3 pt10 btm">填写的商品卖点，会在商品详情页的商品名称下面展示，最多展示2行</p>
-        <p class="cen">
-            <img src="../assets/img/3b864addaf47e79536de5f2dee5b5edc.png" class="ddsf_dert">
-        </p>
-    </section>
+            <section v-if="sd_ff==1">
+                <p class="z3 pt10 btm">将商品在微信分享给朋友时，该处填写的内容会展示在商品名称下面</p>
+                <p class="cen">
+                    <img src="../assets/img/fenxiangms.png" class="ddsf_dert">
+                </p>
 
 
+            </section>
+            <section v-if="sd_ff==2">
 
-</el-dialog>
+                <p class="z3 pt10 btm">填写的商品卖点，会在商品详情页的商品名称下面展示，最多展示2行</p>
+                <p class="cen">
+                    <img src="../assets/img/3b864addaf47e79536de5f2dee5b5edc.png" class="ddsf_dert">
+                </p>
+            </section>
 
 
-</div>
+
+        </el-dialog>
+
+
+    </div>
 </template>
 <script>
     import up_img from "../components/up_img"
@@ -313,6 +327,11 @@
     export default {
         data() {
             return {
+                props: {
+                    multiple: true
+                },
+                values: [],
+                options: [],
                 active: 0,
                 sd_ff: 1,
                 dialogVisible: false,
@@ -414,8 +433,8 @@
                 })
             },
             queding_er(data) {
-                this.dialogVisible_er_san=false
-                this.sku[0].v[this.naum_sd].fmt=data
+                this.dialogVisible_er_san = false
+                this.sku[0].v[this.naum_sd].fmt = data
             },
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';
@@ -428,6 +447,7 @@
             },
             submitForm(formName) {
                 this.$refs.form.validate((valid) => {
+                    console.log(this.form.lemu);
                     if (valid) {
                         var ddf_df = ""
                         this.form.spt = this.form.spt.join(",")
@@ -456,20 +476,23 @@
                     sd_der.spt = sd_der.spt.split(",")
 
 
-                    this.sd_drtyx = JSON.parse(sd_der.sd_drtyx)||[]
+                    this.sd_drtyx = JSON.parse(sd_der.sd_drtyx) || []
 
-                    this.sku = JSON.parse(sd_der.sku)||[]
+                    this.sku = JSON.parse(sd_der.sku) || []
 
                     this.form = sd_der
                 }
 
             },
+            handleChange(value) {
+                console.log(value);
+            },
             async spfl_ds() {
-                this.spfl = await this.post("shopp/fenlei", {
+                this.spfl = await this.post("shopp/getfenlei", {
                     type: 3,
                     page: 1
                 })
-                this.spfl = this.spfl.data
+                this.options = this.spfl
             }
         },
         mounted() {
@@ -481,64 +504,39 @@
             sku: {
                 handler: function() {
                     var sd_dff = []
-                    try{
-                    if (this.sku.length == 1) {
-                        this.sku[0].v.map((a, b) => {
-                            var dsd_dff = {}
-                            dsd_dff.sku_name = a.name
-                            dsd_dff.xisnhi = a.name
-                            try {
-                                dsd_dff.jiage = this.sd_drtyx[b].jiage
-                                dsd_dff.kucun = this.sd_drtyx[b].kucun
-                                dsd_dff.xiaoliang = this.sd_drtyx[b].xiaoliang
-                                dsd_dff.cbjia = this.sd_drtyx[b].cbjia
-                            } catch (e) {
-                                dsd_dff.jiage = 0
-                                dsd_dff.kucun = 0
-                                dsd_dff.xiaoliang = 0
-                                dsd_dff.cbjia = 0
-                            }
-
-
-
-
-                            sd_dff.push(dsd_dff)
-                        })
-                        this.sd_drtyx = sd_dff
-                    }
-                    if (this.sku.length == 2) {
-                        var sd_df = 0
-                        this.sku[0].v.map((a, b) => {
-                            this.sku[1].v.map((c, d) => {
-
+                    try {
+                        if (this.sku.length == 1) {
+                            this.sku[0].v.map((a, b) => {
                                 var dsd_dff = {}
-                                dsd_dff.sku_name = a.name + ";" + c.name
-                                dsd_dff.xisnhi = c.name
+                                dsd_dff.sku_name = a.name
+                                dsd_dff.xisnhi = a.name
                                 try {
-                                    dsd_dff.jiage = this.sd_drtyx[sd_df].jiage
-                                    dsd_dff.kucun = this.sd_drtyx[sd_df].kucun
-                                    dsd_dff.xiaoliang = this.sd_drtyx[sd_df].xiaoliang
-                                    dsd_dff.cbjia = this.sd_drtyx[sd_df].cbjia
+                                    dsd_dff.jiage = this.sd_drtyx[b].jiage
+                                    dsd_dff.kucun = this.sd_drtyx[b].kucun
+                                    dsd_dff.xiaoliang = this.sd_drtyx[b].xiaoliang
+                                    dsd_dff.cbjia = this.sd_drtyx[b].cbjia
                                 } catch (e) {
                                     dsd_dff.jiage = 0
                                     dsd_dff.kucun = 0
                                     dsd_dff.xiaoliang = 0
                                     dsd_dff.cbjia = 0
                                 }
-                                sd_df++
+
+
+
+
                                 sd_dff.push(dsd_dff)
                             })
-                        })
-                        this.sd_drtyx = sd_dff
-                    }
-                    if (this.sku.length == 3) {
-                        var sd_df = 0
-                        this.sku[0].v.map((a, b) => {
-                            this.sku[1].v.map((c, d) => {
-                                this.sku[2].v.map((e, f) => {
+                            this.sd_drtyx = sd_dff
+                        }
+                        if (this.sku.length == 2) {
+                            var sd_df = 0
+                            this.sku[0].v.map((a, b) => {
+                                this.sku[1].v.map((c, d) => {
+
                                     var dsd_dff = {}
-                                    dsd_dff.sku_name = a.name + ";" + c.name + ";" + e.name
-                                    dsd_dff.xisnhi = e.name
+                                    dsd_dff.sku_name = a.name + ";" + c.name
+                                    dsd_dff.xisnhi = c.name
                                     try {
                                         dsd_dff.jiage = this.sd_drtyx[sd_df].jiage
                                         dsd_dff.kucun = this.sd_drtyx[sd_df].kucun
@@ -553,14 +551,39 @@
                                     sd_df++
                                     sd_dff.push(dsd_dff)
                                 })
-
                             })
-                        })
-                        this.sd_drtyx = sd_dff
-                    }
-                        }catch(e){
-                            
+                            this.sd_drtyx = sd_dff
                         }
+                        if (this.sku.length == 3) {
+                            var sd_df = 0
+                            this.sku[0].v.map((a, b) => {
+                                this.sku[1].v.map((c, d) => {
+                                    this.sku[2].v.map((e, f) => {
+                                        var dsd_dff = {}
+                                        dsd_dff.sku_name = a.name + ";" + c.name + ";" + e.name
+                                        dsd_dff.xisnhi = e.name
+                                        try {
+                                            dsd_dff.jiage = this.sd_drtyx[sd_df].jiage
+                                            dsd_dff.kucun = this.sd_drtyx[sd_df].kucun
+                                            dsd_dff.xiaoliang = this.sd_drtyx[sd_df].xiaoliang
+                                            dsd_dff.cbjia = this.sd_drtyx[sd_df].cbjia
+                                        } catch (e) {
+                                            dsd_dff.jiage = 0
+                                            dsd_dff.kucun = 0
+                                            dsd_dff.xiaoliang = 0
+                                            dsd_dff.cbjia = 0
+                                        }
+                                        sd_df++
+                                        sd_dff.push(dsd_dff)
+                                    })
+
+                                })
+                            })
+                            this.sd_drtyx = sd_dff
+                        }
+                    } catch (e) {
+
+                    }
 
                 },
                 deep: true
@@ -702,7 +725,8 @@
         background: #fff;
         text-align: center
     }
-    .sd_jh_dff img{
+
+    .sd_jh_dff img {
         width: 100%;
         height: 100%;
     }
