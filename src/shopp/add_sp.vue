@@ -446,9 +446,10 @@
                 return isLt2M;
             },
             submitForm(formName) {
-                this.$refs.form.validate((valid) => {
-                    console.log(this.form.lemu);
+                console.log();
+                this.$refs.form.validate(async (valid) => {
                     if (valid) {
+                         this.form.lemu = this.form.lemu.join(',')
                         var ddf_df = ""
                         this.form.spt = this.form.spt.join(",")
                         this.form.xiqngqing = this.$refs.fuwenben.getUEContent()
@@ -462,8 +463,8 @@
 
                         this.form.sku = JSON.stringify(this.sku)
                         console.log(this.form);
-                        this.post('shopp/sp_list', this.form)
-                        this.$router.back(-1)
+                        await this.post('shopp/sp_list', this.form)
+                        //this.$router.back(-1)
                     }
                 });
             },
