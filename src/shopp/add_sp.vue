@@ -51,13 +51,16 @@
                         </el-form-item>
                         <el-form-item label="价格-库存" prop="jiage">
                             <el-row>
-                                <el-col :span="8">
+                                <el-col :span="6">
                                     <el-input placeholder="请输入价格" class="w100" v-model="form.jiage"></el-input>
                                 </el-col>
-                                <el-col :span="8" class="pl20">
+                                <el-col :span="6" class="pl20">
+                                    <el-input placeholder="请输入单位/例如元、个、条" class="w100" v-model="form.scdanwei"></el-input>
+                                </el-col>
+                                <el-col :span="6" class="pl20">
                                     <el-input placeholder="请输入库存" class="w100" v-model="form.kucun"></el-input>
                                 </el-col>
-                                <el-col :span="8" class="pl20">
+                                <el-col :span="6" class="pl20">
                                     <el-input placeholder="请输入运费价格" class="w100" v-model="form.yunfei"></el-input>
                                 </el-col>
                             </el-row>
@@ -234,10 +237,10 @@
 
 
                             <el-form-item label="商品分类">
-                            
 
 
-<el-cascader :options="options"  :props="props" v-model="form.lemu" ></el-cascader>
+
+                                <el-cascader :options="options" :props="props" v-model="form.scfenlei"></el-cascader>
 
 
                                 <!--
@@ -340,13 +343,15 @@
                 dialogVisible_er_san: false,
                 naum_sd: "",
                 form: {
+                    scfenlei: [], //商品类目
+                    scdanwei: "", //单位
+                    scchsde: [],
                     name: "", //商品名称
                     fxms: "", //分享描述
                     spt: [], //商品图片
                     jiage: "", //价格
                     kucun: "", //库存
                     yunfei: "", //运费
-                    lemu: "", //商品类目
                     spmd: "", //商品卖点
                     xiqngqing: "", //商品详情
                     sd_drtyx: "",
@@ -397,9 +402,6 @@
                     v: []
                 })
 
-
-
-
             },
             del_guigexm(idx) { //删除不规格项目
                 this.sku.splice(idx, 1)
@@ -446,10 +448,8 @@
                 return isLt2M;
             },
             submitForm(formName) {
-                console.log();
                 this.$refs.form.validate(async (valid) => {
                     if (valid) {
-                         this.form.lemu = this.form.lemu.join(',')
                         var ddf_df = ""
                         this.form.spt = this.form.spt.join(",")
                         this.form.xiqngqing = this.$refs.fuwenben.getUEContent()
@@ -458,13 +458,17 @@
                         } else {
                             this.form.type = 1
                         }
-
                         this.form.sd_drtyx = JSON.stringify(this.sd_drtyx)
-
                         this.form.sku = JSON.stringify(this.sku)
-                        console.log(this.form);
+
+                        let sswerww = this.form.scfenlei.join(",")
+                        let set7 = new Set(sswerww.split(","))
+                        let sdeef = Array.from(set7)
+                        this.form.scchsde = sdeef.join(",")
+                        this.form.scfenlei = JSON.stringify(this.form.scfenlei)
                         await this.post('shopp/sp_list', this.form)
-                        //this.$router.back(-1)
+                        this.hf('shopp/sp_list')
+                        
                     }
                 });
             },
@@ -475,13 +479,22 @@
                         type: 3
                     }, true)
                     sd_der.spt = sd_der.spt.split(",")
-
-
                     this.sd_drtyx = JSON.parse(sd_der.sd_drtyx) || []
-
                     this.sku = JSON.parse(sd_der.sku) || []
-
+                    sd_der.scfenlei = JSON.parse(sd_der.scfenlei) || []
                     this.form = sd_der
+                }
+
+                if (this.$route.query.urler) {
+                    var sd_dereer = await this.post("pachong/albb", {
+                        urler: this.$route.query.urler
+                    }, true)
+                    this.form.name = sd_dereer.name
+                    this.form.fxms = sd_dereer.name
+                    this.form.spt =  sd_dereer.spt.split(",")
+                    this.form.xiqngqing = sd_dereer.xiqngqing
+                    this.form.spmd =  sd_dereer.spmd
+                    console.log(sd_dereer);
                 }
 
             },
@@ -497,7 +510,6 @@
             }
         },
         mounted() {
-
             this.getdate()
             this.spfl_ds()
         },
@@ -522,10 +534,6 @@
                                     dsd_dff.xiaoliang = 0
                                     dsd_dff.cbjia = 0
                                 }
-
-
-
-
                                 sd_dff.push(dsd_dff)
                             })
                             this.sd_drtyx = sd_dff

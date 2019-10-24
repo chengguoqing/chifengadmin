@@ -7,7 +7,8 @@
             <section class="sd_j_dert pt20">
                    <el-upload
                               class="fl mr15"
-action="/comm/tukuimg"
+                              multiple
+action="http://192.168.1.102:8360/comm/tukuimg"
   list-type="picture-card"
   name="image"
   :on-success="handleAvatarSuccess"                 
