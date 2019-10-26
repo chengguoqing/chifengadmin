@@ -9,7 +9,7 @@
      </section>
             
             <section>
-        <el-table class="mt20"   v-loading="loading" :data="tableData" style="width: 100%" highlight-current-row border>
+        <el-table class="mt20 juzhong"   v-loading="loading" :data="tableData" style="width: 100%" highlight-current-row border>
             <el-table-column  type="index" label="序号"  width="100"></el-table-column>
             <el-table-column prop="title" label="标题" ></el-table-column>
             <el-table-column prop="fabiaoren" label="发表人" ></el-table-column>

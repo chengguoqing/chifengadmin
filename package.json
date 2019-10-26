@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && node ./scripts/upcdn.js && node ./scripts/scfwq.js",
+    "build": "vue-cli-service build && node ./scripts/upcdn.js && node ./scripts/scfwq.js ",
+    "builds": "(vue-cli-service build --mode alpha) && node ./scripts/upcdn.js && node ./scripts/scfwq.js ",
+    "serveer": "vue-cli-service build --mode alpha", 
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

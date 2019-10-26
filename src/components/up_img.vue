@@ -8,7 +8,7 @@
                    <el-upload
                               class="fl mr15"
                               multiple
-action="http://192.168.1.102:8360/comm/tukuimg"
+:action="lujing+'comm/tukuimg'"
   list-type="picture-card"
   name="image"
   :on-success="handleAvatarSuccess"                 

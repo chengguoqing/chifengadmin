@@ -27,7 +27,7 @@
            
             
             <section>
-        <el-table class="mt20"   v-loading="loading" :data="tableData" style="width: 100%" highlight-current-row border>
+        <el-table class="mt20 cen"   v-loading="loading" :data="tableData" style="width: 100%" highlight-current-row border>
             <el-table-column  type="index" label="序号"  width="100"></el-table-column>
             <el-table-column prop="name" label="商品名称" ></el-table-column>
             <el-table-column prop="jiage" label="价格" ></el-table-column>
@@ -82,6 +82,7 @@
         mixins: [playlistMixin], //注册mixins
         methods: {
             sousuode() {
+                this.page =1
                 this.getuser("shopp/sp_list", {
                     name: this.name_dx,
                     type:3
@@ -89,6 +90,7 @@
             }
         },
         mounted() {
+            this.type =3
             this.getuser("shopp/sp_list", {type:3})
         },
     }

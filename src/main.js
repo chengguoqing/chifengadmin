@@ -27,6 +27,11 @@ Vue.use(public_c);
   import dx_row from "@/components/dx_row.js"
 Vue.use(dx_row)
 Vue.use(VueAMap);
+let lujing = 'http://192.168.1.102:8360/'
+if(process.env.NODE_ENV === 'production'){
+    lujing= 'http://duxinggj.com/'
+}
+Vue.prototype.lujing = lujing
 VueAMap.initAMapApiLoader({
     key: '1ca50beb27f893268297a00cdb0acdf3',
     plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],

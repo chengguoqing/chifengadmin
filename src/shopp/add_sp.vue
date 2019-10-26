@@ -24,6 +24,10 @@
                         <el-form-item label="商品名" prop="name">
                             <el-input placeholder="" v-model="form.name"></el-input>
                         </el-form-item>
+                          <el-form-item label="别名" prop="bieming">
+                            <el-input placeholder="" v-model="form.bieming"></el-input>
+                        </el-form-item>
+                        
                         <el-form-item label="分享描述" prop="fxms">
                             <el-input placeholder="" v-model="form.fxms"></el-input>
                             <section class="fz12 z9 hg_deet">
@@ -343,6 +347,7 @@
                 dialogVisible_er_san: false,
                 naum_sd: "",
                 form: {
+                    bieming:[],
                     scfenlei: [], //商品类目
                     scdanwei: "", //单位
                     scchsde: [],
@@ -437,6 +442,7 @@
             queding_er(data) {
                 this.dialogVisible_er_san = false
                 this.sku[0].v[this.naum_sd].fmt = data
+                
             },
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';

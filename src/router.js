@@ -9,11 +9,13 @@ import add_wz from './wenzhang/add_wz.vue'
 import dianpu from './page/dianpu.vue'
 import test from './page/test.vue'
 import kefu from './kefu/index.vue'
+import weixin from './weixin/index.vue'
+
 Vue.use(Router)
 
 export default new Router({
     routes: [
-          {
+        {
             path: '/test',
             name: '',
             component: test,
@@ -47,12 +49,12 @@ export default new Router({
                     title: '用户列表'
                 },
                 component: () =>
-                    import ('@/user_msg/user_list')
+                    import('@/user_msg/user_list')
             }, {
                 name: "user_msg",
                 path: 'xiangqing',
                 component: () =>
-                    import ('@/user_msg/xiangqing'),
+                    import('@/user_msg/xiangqing'),
                 meta: {
                     requireAuth: true,
                     title: '用户列表'
@@ -78,8 +80,8 @@ export default new Router({
                     title: '商品列表'
                 },
                 component: () =>
-                    import ('@/shopp/sp_list')
-            },{
+                    import('@/shopp/sp_list')
+            }, {
                 name: "shopp/sp_fl",
                 path: 'sp_fl',
                 meta: {
@@ -87,7 +89,7 @@ export default new Router({
                     title: '商品分类'
                 },
                 component: () =>
-                    import ('@/shopp/sp_fl')
+                    import('@/shopp/sp_fl')
             }, {
                 name: "shopp/add_sp",
                 path: 'add_sp',
@@ -96,7 +98,44 @@ export default new Router({
                     title: '添加商品'
                 },
                 component: () =>
-                    import ('@/shopp/add_sp')
+                    import('@/shopp/add_sp')
+            }]
+
+    }, {
+            path: '/weixin',
+            name: 'weixin',
+            component: weixin,
+            meta: {
+                requireAuth: true,
+                title: '微信商城'
+            },
+            children: [{
+                name: "weixin/user_list",
+                path: 'user_list',
+                meta: {
+                    requireAuth: true,
+                    title: '用户列表'
+                },
+                component: () =>
+                    import('@/weixin/user_list')
+            }, {
+                name: "weixin/dingdan_list",
+                path: 'dingdan_list',
+                meta: {
+                    requireAuth: true,
+                    title: '订单列表'
+                },
+                component: () =>
+                    import('@/weixin/dingdan_list')
+            }, {
+                name: "weixin/chengjiao_list",
+                path: 'chengjiao_list',
+                meta: {
+                    requireAuth: true,
+                    title: '成交列表'
+                },
+                component: () =>
+                    import('@/weixin/chengjiao_list')
             }]
 
     }, {
@@ -151,7 +190,7 @@ export default new Router({
             }
 
     }
-        
-        
+
+
     ]
 })

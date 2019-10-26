@@ -1,11 +1,15 @@
 var url_d = "http://192.168.1.102:8360/"
-//url_d = "http://duxinggj.com/"
+if (process.env.NODE_ENV === 'production') {
+    url_d = "http://duxinggj.com/"
+}
 import router from './router'
 var wx = require('weixin-js-sdk');
 import axios from "axios"
 var CryptoJS = require("crypto-js");
 var key = "duxinggongchengguoqingguangzoulg"
-import { Message } from 'element-ui';
+import {
+    Message
+} from 'element-ui';
 export default {
     install(Vue) {
         Vue.prototype.base_url = "http://127.0.0.1:8360/"
@@ -25,7 +29,6 @@ export default {
                     url: url_d + url,
                     data: dtat
                 }).then((res) => {
-                    console.log(res.data);
                     sd_Df = res
                     if (res.data.code < 0) {
                         Message.error(res.data.msg);

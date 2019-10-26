@@ -11,7 +11,7 @@
                         <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
                             <el-menu-item index="/">
                                 <i class="el-icon-menu"></i>
-                                <span slot="title">首页{{this.$store.state.tesdfr}}</span>
+                                <span slot="title">首页</span>
                             </el-menu-item>
                             <el-submenu index="/shopp">
                                 <template slot="title">
@@ -26,6 +26,24 @@
                                     <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
                                 </el-menu-item-group>
                             </el-submenu>
+                            <el-submenu index="/weixin">
+                                <template slot="title">
+                                    <i class="el-icon-menu"></i>
+                                    <span slot="title">微信商城</span>
+                                </template>
+
+                                <el-menu-item-group>
+                                    <el-menu-item index="/weixin/user_list">用户列表</el-menu-item>
+                                </el-menu-item-group>
+                                <el-menu-item-group>
+                                    <el-menu-item index="/weixin/dingdan_list">订单列表</el-menu-item>
+                                </el-menu-item-group>
+                                 <el-menu-item-group>
+                                    <el-menu-item index="/weixin/chengjiao_list">成交列表</el-menu-item>
+                                </el-menu-item-group>
+                            </el-submenu>
+
+
                             <el-menu-item index="/wenzhang">
                                 <i class="el-icon-menu"></i>
                                 <span slot="title">文章列表</span>
@@ -36,12 +54,14 @@
                             </el-menu-item>
                             <el-menu-item index="/user_msg">
                                 <i class="el-icon-menu"></i>
-                                <span slot="title">用户管理</span>
+                                <span slot="title">管理员列表</span>
                             </el-menu-item>
+                            <!--
                             <el-menu-item index="/kefu">
                                 <i class="el-icon-menu"></i>
                                 <span slot="title">客服</span>
                             </el-menu-item>
+-->
                         </el-menu>
                         <ul class="sd_deeett">
                             <li @click="out_back">
@@ -52,7 +72,7 @@
                     </div>
                 </el-aside>
                 <el-main>
-                    <router-view  />
+                    <router-view />
                 </el-main>
             </el-container>
         </el-container>

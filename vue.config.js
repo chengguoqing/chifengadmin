@@ -10,9 +10,6 @@ var sd_dert = {
 }
 if (process.env.NODE_ENV == 'production') {//build环境
     sd_dert.chainWebpack = config => {
-        // 省略其它代码 ······
-        // #region 忽略生成环境打包的文件
-
         var externals = {
             vue: 'Vue',
             axios: 'axios',

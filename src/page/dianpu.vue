@@ -1,110 +1,101 @@
 <template>
-	<div >
-	
-                
-    <section class="  ">
-             
-                  
-                  <el-form ref="form" :model="form" label-width="120px"  :rules="rules">
-                      
-                          <el-card shadow="never" class="" >
-                         
+    <div>
+
+
+        <section class="  ">
+
+
+            <el-form ref="form" :model="form" label-width="120px" :rules="rules">
+
+                <el-card shadow="never" class="">
+
                     <el-row :gutter="20">
                         <el-col :span="12">
-    
-     <section class="sd_jh_wer mt20">
-                      
+
+                            <section class="sd_jh_wer mt20">
+
                                 <el-form-item label="店铺logo" prop="logo">
-            
-                     
-                     <section  class="avatar-uploader cz f_b br yj4 sz mb10" @click="dialogVisible=true" >
-        
-                         <img :src="form.logo" class="w100 h100 cz" v-if="form.logo">
-                                 <i class="el-icon-plus avatar-uploader-icon df_deert" v-else></i>
+
+
+                                    <section class="avatar-uploader cz f_b br yj4 sz mb10" @click="dialogVisible=true">
+
+                                        <img :src="form.logo" class="w100 h100 cz" v-if="form.logo">
+                                        <i class="el-icon-plus avatar-uploader-icon df_deert" v-else></i>
+                                    </section>
+
+
+                                </el-form-item>
+
+                                <el-form-item label="店铺名称" prop="name">
+                                    <el-input placeholder="" v-model="form.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="经营地址" prop="jydz">
+                                    <section class="pr sd_deerrty" :class="form.jydz?'act':''">
+                                        <el-cascader v-model="eeertxwwrr" ref="cascaderAddr" :options="options" placeholder="" @change="handleItemChange" class="w100 pr" :props="props"></el-cascader>
+                                        <!--                                        <span class="sd_ddert">{{form.jydz}}</span>-->
+                                    </section>
+                                </el-form-item>
+
+                            </section>
+
+
+
+                        </el-col>
+                        <el-col :span="12">
+                            <section class="sd_jh_wer ">
+
+                                <el-form-item label="联系人姓名" prop="lxr_name">
+                                    <el-input placeholder="" v-model="form.lxr_name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="联系人电话" prop="lxr_phone">
+                                    <el-input placeholder="" v-model="form.lxr_phone"></el-input>
+                                </el-form-item>
+
+                                <el-form-item label="关于我们" prop="gywm">
+                                    <el-input type="textarea" rows="5" placeholder="" v-model="form.gywm"></el-input>
+                                </el-form-item>
+
+                            </section>
+
+
+                        </el-col>
+                    </el-row>
+
+
+
+                    <el-form-item label="详情地址" prop="jydz_text">
+                        <section class="sd_jh_wer pr120 pr">
+                            <el-input placeholder="" v-model="form.jydz_text"></el-input>
+                            <el-button type="primary" class="ssdi_ert" @click="sez_sd">搜索地图</el-button>
+                        </section>
+
+                        <div class="sd_dfrrttx">
+
+                            <el-amap vid="amap" :zoom="zoom" :center="center" class="amap-demo" :plugin="plugin" :events="marker">
+                                <el-amap-marker :draggable="true" vid="component-marker" :position="center_er" :events="marker_er"></el-amap-marker>
+                            </el-amap>
+                        </div>
+
+                    </el-form-item>
+
+
+                </el-card>
+
+            </el-form>
+
+            <section class="pl40 mt20">
+                <el-button type="primary" plain @click="get_drert">保存</el-button>
             </section>
 
 
-            </el-form-item>
-                      
-        <el-form-item label="店铺名称"  prop="name">
-                <el-input placeholder="" v-model="form.name" ></el-input>
-    </el-form-item>
-             <el-form-item label="经营地址" prop="jydz">
-                 <section class="pr sd_deerrty" :class="form.jydz?'act':''">
-        <el-cascader
-        ref="cascaderAddr"
-  :options="options"
-                     placeholder="" 
-                     expand-trigger="hover"
-    @change="handleItemChange"
-   class="w100 pr"
-></el-cascader>
-                     <span class="sd_ddert">{{form.jydz}}</span>
-                     </section>
-             </el-form-item>
-         
-                    </section>
-                            
-                            
-    
-    </el-col>
-                     <el-col :span="12">
-      <section class="sd_jh_wer ">
-               
-                    <el-form-item label="联系人姓名" prop="lxr_name">
-                <el-input  placeholder="" v-model="form.lxr_name" ></el-input>
-    </el-form-item>
-                <el-form-item label="联系人电话" prop="lxr_phone">
-                <el-input  placeholder="" v-model="form.lxr_phone" ></el-input>
-    </el-form-item>
-          
-          <el-form-item label="关于我们" prop="gywm">
-                <el-input type="textarea" rows="5" placeholder="" v-model="form.gywm" ></el-input>
-    </el-form-item>
-                   
-                    </section>
-          
-    
-    </el-col>
-                    </el-row>          
-                              
-     
-                           
-             <el-form-item label="详情地址" prop="jydz_text">
-            <section class="sd_jh_wer pr120 pr">
-                      <el-input placeholder="" v-model="form.jydz_text" ></el-input>
-                    <el-button type="primary" class="ssdi_ert" @click="sez_sd">搜索地图</el-button>
-           </section>
-                                         
-                 <div class="sd_dfrrttx"> 
-                     
-         <el-amap vid="amap"  :zoom="zoom" :center="center"  class="amap-demo" :plugin="plugin" :events="marker">
-           <el-amap-marker :draggable="true"  vid="component-marker"  :position="center_er"  :events="marker_er"></el-amap-marker>
-      </el-amap>
+
+        </section>
+
+
+        <el-dialog class="sddf_drrtimg" :visible.sync="dialogVisible" width="890px">
+            <up_img @close_s="dialogVisible=false" @queding="queding" v-if="dialogVisible"></up_img>
+        </el-dialog>
     </div>
-                                         
-    </el-form-item>
-                                
-                      
-    </el-card>
-                             
-                  </el-form>
-                    
-                    <section class="pl40 mt20">    <el-button type="primary" plain @click="get_drert">保存</el-button></section>
-                    
-  
-        
-    </section>
-        
-       
-     <el-dialog
-         class="sddf_drrtimg"
-       :visible.sync="dialogVisible"
-       width="890px"
-       >
-       <up_img @close_s="dialogVisible=false" @queding="queding"  v-if="dialogVisible"></up_img>
-     </el-dialog>
-	</div>
 </template>
 <script>
     var sd_dre = ""
@@ -115,6 +106,7 @@
     export default {
         data() {
             return {
+                eeertxwwrr: [],
                 dialogVisible: false,
                 visible: true,
                 options: "",
@@ -125,6 +117,9 @@
                     label: '浙江',
                     cities: []
                 }],
+                props: {
+                    value: "label"
+                },
                 zoom: 15,
                 center: [113.482178, 23.191308],
                 center_er: [113.482178, 23.191308],
@@ -207,7 +202,8 @@
                 var sd_dr = await this.post("comm/get_diz", der_rr)
                 sd_dr = sd_dr.regeocode
                 var addressComponent = sd_dr.addressComponent
-                this.form.jydz = addressComponent.province + "/" + addressComponent.district + "/" + addressComponent.township;
+                //                this.form.jydz = addressComponent.province + "/" + addressComponent.district + "/" + addressComponent.township;
+                console.log(addressComponent.province + "/" + addressComponent.district + "/" + addressComponent.township);
                 this.form.jydz_text = sd_dr.formatted_address.split(addressComponent.township)[1]
             },
             queding(data) {
@@ -215,16 +211,17 @@
                 this.dialogVisible = false
             },
             handleItemChange(item) {
-                this.form.jydz = this.$refs['cascaderAddr'].currentLabels.join("/")
+                this.form.jydz = this.eeertxwwrr.join("/")
                 this.sez_sd()
 
 
             },
             async sez_sd() {
-                var der_rr = encodeURI(this.form.jydz + this.form.jydz_text)
+                var der_rr = this.form.jydz + this.form.jydz_text
                 var sd_dr = await this.post("comm/get_jwd", {
                     address: der_rr
                 })
+                
                 var location = sd_dr.geocodes[0].location.split(",")
                 this.center = location
                 this.center_er = location
@@ -232,14 +229,21 @@
             get_drert(e) {
                 this.$refs.form.validate((valid) => {
                     if (valid) {
-                        this.form.type=2
+                        this.form.type = 2
                         this.post('shopp/info', this.form)
+
                     }
                 });
             },
             async getinfo() {
-                this.form = await this.post('shopp/info', {type:3,id:1},true)
+                this.form = await this.post('shopp/info', {
+                    type: 3,
+                    id: 1
+                }, true)
+                this.eeertxwwrr = this.form.jydz.split("/")
+                console.log(this.eeertxwwrr);
                 this.sez_sd()
+                
             }
 
         },
