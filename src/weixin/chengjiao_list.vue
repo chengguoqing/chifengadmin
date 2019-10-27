@@ -27,13 +27,13 @@
                     <el-table-column prop="jydh" label="交易订单号"></el-table-column>
                     <el-table-column prop="zongjia" label="订单金额"></el-table-column>
 
-<!--
+
                     <el-table-column label="下单时间">
                         <template slot-scope="scope">
                             <span v-html="time_d(scope.row.addtime)"></span>
                         </template>
                     </el-table-column>
--->
+
                     <el-table-column label="操作">
                         <template slot-scope="scope">
                             <el-button type="text" size="small" @click="del_list('scht/delchengjiaolist',scope.row.jydh)">删除</el-button>

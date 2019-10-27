@@ -32,7 +32,7 @@
                     </el-table-column>
                     <el-table-column label="第一次登录时间">
                         <template slot-scope="scope">
-                            <span v-html="time_d(scope.row.addtime)"></span>
+                            <span v-html="time_d(scope.row.addtimes)"></span>
                         </template>
                     </el-table-column>
                     <el-table-column label="操作">
