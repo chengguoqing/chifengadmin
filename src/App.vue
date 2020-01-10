@@ -3,29 +3,27 @@
 
         <el-container>
             <el-header class="sd_df_der">
-                <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png">
+				<span class="fz30 cf">驰峰</span>
+               <!-- <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png"> -->
             </el-header>
             <el-container class="sd_deet">
                 <el-aside width="200px">
                     <div class="sd_jh_der">
                         <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
-                            <el-menu-item index="/">
+                            <el-menu-item index="/Outletrrates">
                                 <i class="el-icon-menu"></i>
-                                <span slot="title">首页</span>
+                                <span slot="title">网点及运价</span>
                             </el-menu-item>
-                            <el-submenu index="/shopp">
-                                <template slot="title">
-                                    <i class="el-icon-menu"></i>
-                                    <span slot="title">商品</span>
-                                </template>
-
-                                <el-menu-item-group>
-                                    <el-menu-item index="/shopp/sp_list">商品列表</el-menu-item>
-                                </el-menu-item-group>
-                                <el-menu-item-group>
-                                    <el-menu-item index="/shopp/sp_fl">商品分类</el-menu-item>
-                                </el-menu-item-group>
-                            </el-submenu>
+                               <el-menu-item index="/MyWaybill">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">我的运单</span>
+                            </el-menu-item>
+                            
+                                <el-menu-item index="/warningWaybills">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">预警运单</span>
+                            </el-menu-item>
+                            
                             <el-submenu index="/weixin">
                                 <template slot="title">
                                     <i class="el-icon-menu"></i>
@@ -56,12 +54,6 @@
                                 <i class="el-icon-menu"></i>
                                 <span slot="title">管理员列表</span>
                             </el-menu-item>
-                            <!--
-                            <el-menu-item index="/kefu">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">客服</span>
-                            </el-menu-item>
--->
                         </el-menu>
                         <ul class="sd_deeett">
                             <li @click="out_back">

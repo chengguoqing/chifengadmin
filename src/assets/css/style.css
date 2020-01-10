@@ -1,6 +1,19 @@
+span.el-image-viewer__btn.el-image-viewer__close {
+    color: #fff;
+}
+
+body {
+    background: #f8f8f8
+}
+
 .sd_df_der {
+    line-height: 65px;
     height: 65px;
     background: #000
+}
+
+.el-main {
+    padding: 0 !important
 }
 
 .sd_jhj_d {
@@ -133,6 +146,27 @@
     top: -10px;
     font-size: 18px;
 }
-.juzhong .cell{
+
+.juzhong .cell {
     text-align: center !important
+}
+
+.sddrcrr {
+    padding: 10px 20px;
+}
+
+.dfgdgr {
+    padding: 20px
+}
+.el-step__head.is-success,.el-step__title.is-success,.el-step__description.is-success{
+    color: #00a0e9 !important;
+    border-color: #00a0e9 !important;
+}
+.el-upload--picture-card{
+    
+    line-height: 110px !important;
+}
+.el-upload--picture-card,.el-upload-list--picture-card .el-upload-list__item{
+    width: 100px  !important;
+    height: 100px !important;
 }
