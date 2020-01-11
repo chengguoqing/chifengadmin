@@ -13,6 +13,13 @@
                         <el-form-item label="起始站：">
                             <el-cascader class="w100" v-model="forme.sdfsdfa" :options="chengshi"></el-cascader>
                         </el-form-item>
+                        
+                        <el-form-item label="收货地址：">
+                            <el-cascader class="w100" v-model="forme.sdfsdfh" :options="chengshi"></el-cascader>
+                            <p class="mt10">
+                                <el-input placeholder="请输入详情地址" type="textarea" v-model.trim="forme.sdfsdfi"></el-input>
+                            </p>
+                        </el-form-item>
                         <el-row>
                             <el-col :span="12">
                                 <el-form-item label="品名：">
@@ -51,18 +58,16 @@
                                 <el-option label="卸货（含上楼）" value="3"></el-option>
                             </el-select>
                         </el-form-item>
-                        <el-form-item label="收货地址：">
-                            <el-cascader class="w100" v-model="forme.sdfsdfh" :options="chengshi"></el-cascader>
-                            <p class="mt10">
-                                <el-input placeholder="请输入详情地址" type="textarea" v-model.trim="forme.sdfsdfi"></el-input>
-                            </p>
-                        </el-form-item>
                     </el-form>
 
                     <div class="cen ">
-                        <el-button type="primary" class="dfsfdrrt" @click="chauxns=true">查询</el-button>
+                        <el-button type="primary" class="dfsfdrrt" @click="chauxns=true;cddrr=true">查询</el-button>
                         <el-button type="" class="ml20 dfsfdrrt">重置</el-button>
                     </div>
+                    
+                    <div class="dfsdsrtt" v-if="cddrr&&forme.sdfsdff==1">
+    <ditupup></ditupup>
+    </div>
 
                    <el-row class="cderrttxe" v-if="forme.sdfsdff==1 && chauxns">
                         <el-col :span="12">
@@ -109,6 +114,7 @@
     </div>
 </template>
 <script>
+        import ditupup from "@/components/ditupup"
     import {
         chengshi
     } from '@/chengshi'
@@ -117,6 +123,7 @@
             return {
                 chengshi: '',
                 chauxns:false,
+                cddrr:false,
                 forme: {
                     sdfsdfa: '',
                     sdfsdfb: '',
@@ -130,7 +137,9 @@
                 }
             }
         },
-        components: {},
+        components: {
+            ditupup
+        },
         methods: {},
         mounted() {
             this.chengshi = chengshi
@@ -149,6 +158,10 @@
     .cderrttxe{
         padding-top: 30px;
         padding-left: 120px;
+    }
+    .dfsdsrtt{
+        width: 600px;
+        margin-top: 20px
     }
 
 </style>

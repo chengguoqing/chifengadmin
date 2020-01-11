@@ -1,73 +1,59 @@
 <template>
     <div id="app">
+        <div class="sd_df_der pd">
+            <span class="fz30 cf">驰峰</span>
+        </div>
+        <div class="row">
+            <div class="sd_jh_der">
+                <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
+                    <el-menu-item index="/">
+                        <i class="el-icon-s-goods"></i>
+                        <span slot="title">网点及运价</span>
+                    </el-menu-item>
+                    <el-menu-item index="/MyWaybill">
+                        <i class="el-icon-s-order"></i>
+                        <span slot="title">我的运单</span>
+                    </el-menu-item>
 
-        <el-container>
-            <el-header class="sd_df_der">
-				<span class="fz30 cf">驰峰</span>
-               <!-- <img class="sd_jhj_d" src="http://duxinggj.com/www/static//img/logo_er.png"> -->
-            </el-header>
-            <el-container class="sd_deet">
-                <el-aside width="200px">
-                    <div class="sd_jh_der">
-                        <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
-                            <el-menu-item index="/Outletrrates">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">网点及运价</span>
-                            </el-menu-item>
-                               <el-menu-item index="/MyWaybill">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">我的运单</span>
-                            </el-menu-item>
-                            
-                                <el-menu-item index="/warningWaybills">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">预警运单</span>
-                            </el-menu-item>
-                            
-                            <el-submenu index="/weixin">
-                                <template slot="title">
-                                    <i class="el-icon-menu"></i>
-                                    <span slot="title">微信商城</span>
-                                </template>
+                    <el-menu-item index="/warningWaybills">
+                        <i class="el-icon-info"></i>
+                        <span slot="title">预警运单</span>
+                    </el-menu-item>
+                       <el-menu-item index="/operationAnalysis">
+                        <i class="el-icon-s-marketing"></i>
+                        <span slot="title">运营分析</span>
+                    </el-menu-item>
 
-                                <el-menu-item-group>
-                                    <el-menu-item index="/weixin/user_list">用户列表</el-menu-item>
-                                </el-menu-item-group>
-                                <el-menu-item-group>
-                                    <el-menu-item index="/weixin/dingdan_list">订单列表</el-menu-item>
-                                </el-menu-item-group>
-                                 <el-menu-item-group>
-                                    <el-menu-item index="/weixin/chengjiao_list">成交列表</el-menu-item>
-                                </el-menu-item-group>
-                            </el-submenu>
+                    
+                    <el-menu-item index="/claimlist">
+                        <i class="el-icon-s-platform"></i>
+                        <span slot="title">理赔申请</span>
+                    </el-menu-item>
+
+                    <el-menu-item index="/clientEvaluation">
+                        <i class="el-icon-chat-dot-round"></i>
+                        <span slot="title">客户评价</span>
+                    </el-menu-item>
+                    <el-menu-item index="/onlineOrder">
+                        <i class="el-icon-set-up"></i>
+                        <span slot="title">在线下单</span>
+                    </el-menu-item>
 
 
-                            <el-menu-item index="/wenzhang">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">文章列表</span>
-                            </el-menu-item>
-                            <el-menu-item index="/dianpu">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">店铺信息</span>
-                            </el-menu-item>
-                            <el-menu-item index="/user_msg">
-                                <i class="el-icon-menu"></i>
-                                <span slot="title">管理员列表</span>
-                            </el-menu-item>
-                        </el-menu>
-                        <ul class="sd_deeett">
-                            <li @click="out_back">
-                                退出登录
+                </el-menu>
+                <ul class="sd_deeett">
+                    <li @click="out_back">
+                        退出登录
 
-                            </li>
-                        </ul>
-                    </div>
-                </el-aside>
-                <el-main>
-                    <router-view />
-                </el-main>
-            </el-container>
-        </el-container>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <router-view />
+            </div>
+        </div>
+
+
     </div>
 </template>
 
@@ -122,7 +108,10 @@
     }
 
     .sd_jh_der {
+        width: 200px;
+        min-height: 100vh;
         padding-top: 20px;
+        background: #47484B
     }
 
     .sd_deeett li {

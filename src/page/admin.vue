@@ -102,7 +102,7 @@
                     this.$message.error('请输入密码！');
                     return
                 }
-				th.hf('/')
+				th.hf('')
 				return
                 var data_e = await this.post("admin/loadin", {
                     user_name: this.user_name,

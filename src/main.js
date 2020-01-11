@@ -13,7 +13,6 @@ import VueParticles from 'vue-particles'
 import VueCookies from 'vue-cookies'
 import SlideVerify from 'vue-monoplasty-slide-verify';
 import VueAMap from 'vue-amap';
-import zidingy from "@/components/zidingy.js"
 Vue.use(SlideVerify);
 Vue.use(VueParticles)
 Vue.use(VueCookies)
@@ -22,10 +21,7 @@ Vue.use(VueWechatTitle)
 Vue.config.productionTip = false
 import 'vant/lib/index.css';
 Vue.use(Vant);
-Vue.use(zidingy);
 Vue.use(public_c);
-  import dx_row from "@/components/dx_row.js"
-Vue.use(dx_row)
 Vue.use(VueAMap);
 let lujing = 'http://192.168.1.102:8360/'
 if(process.env.NODE_ENV === 'production'){
