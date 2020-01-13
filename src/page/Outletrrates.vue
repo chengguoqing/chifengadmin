@@ -2,7 +2,7 @@
 <template>
     <div>
         <p class="bbm pm20 fz16 bgff pt20 pl20">
-            网点及运价
+            网点运价
         </p>
 
         <div class="sddrcrr">
@@ -47,7 +47,7 @@
 
                         </el-row>
                         <el-form-item label="配送方式：" class="fz12">
-                            <el-radio v-model="forme.sdfsdff" label="1"><span class="z6 fz12">自提(自提网点选择)</span></el-radio>
+                            <el-radio v-model="forme.sdfsdff" label="1"><span class="z6 fz12" @click="dialogVisible=true">自提(自提网点选择)</span></el-radio>
                             <el-radio v-model="forme.sdfsdff" label="2">
                                 <span class="z6 fz12">送货</span></el-radio>
                         </el-form-item>
@@ -65,9 +65,6 @@
                         <el-button type="" class="ml20 dfsfdrrt">重置</el-button>
                     </div>
                     
-                    <div class="dfsdsrtt" v-if="cddrr&&forme.sdfsdff==1">
-    <ditupup></ditupup>
-    </div>
 
                    <el-row class="cderrttxe" v-if="forme.sdfsdff==1 && chauxns">
                         <el-col :span="12">
@@ -96,7 +93,7 @@
                             <span class="fz12 z6">预计到达时间：5天</span>
                         </el-col>
                     </el-row>
-                    <div class="cderrttxe fz12 z9 row">
+                    <div class="cderrttxe fz12 z3 b row">
                         <span> 注：</span>
                         <span class="col">
                             1、长度超4.2米，宽度超2.4米，高度超2.8米的异形货，价格另报<br>
@@ -111,6 +108,10 @@
 
             </div>
         </div>
+        
+        <el-dialog class="sddf_drrt" title="网点信息及地图" :visible.sync="dialogVisible" width="30%">
+            <ditupup></ditupup>
+        </el-dialog>
     </div>
 </template>
 <script>
@@ -121,6 +122,7 @@
     export default {
         data() {
             return {
+                dialogVisible:false,
                 chengshi: '',
                 chauxns:false,
                 cddrr:false,

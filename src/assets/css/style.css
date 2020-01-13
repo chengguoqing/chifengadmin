@@ -170,3 +170,8 @@ body {
     width: 100px  !important;
     height: 100px !important;
 }
+p.bbm.pm20.fz16.bgff.pt20.pl20{
+    text-align: center;
+    font-size: 22px !important;
+    font-weight: 600
+}

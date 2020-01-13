@@ -4,7 +4,11 @@
         <el-table :data="tableData" style="width: 100%" border>
             <el-table-column type="index" label="序号" width="80"></el-table-column>
             <el-table-column prop="jhshsda" label="里程"></el-table-column>
-            <el-table-column prop="jhshsdb" label="地址"></el-table-column>
+            <el-table-column prop="jhshsdb" label="地址">
+                <template slot-scope="scope">
+                    <span @click="ssee" class="sz">{{scope.row.jhshsdb}}</span>
+                </template>
+            </el-table-column>
         </el-table>
         <div class="sd_dfrrttx">
 
@@ -32,28 +36,31 @@
                         sd_dre.center_er = sd_def
                         sd_dre.sd_dff(e.lnglat)
                     }
-                }
+                },
+                driving: ''
             }
         },
         components: {
 
         },
         methods: {
-
+            ssee() {
+                console.log(222);
+                this.driving.search("深圳湾", "留仙洞大厦");
+            }
         },
         mounted() {
             // 百度地图API功能
             var map = new BMap.Map("l-map");
-            map.centerAndZoom(new BMap.Point(113.956211,22.52418), 12);
+            map.centerAndZoom(new BMap.Point(113.956211, 22.52418), 12);
 
-            var driving = new BMap.DrivingRoute(map, {
+            this.driving = new BMap.DrivingRoute(map, {
                 renderOptions: {
                     map: map,
                     panel: "r-result",
                     autoViewport: true
                 }
             });
-            driving.search("深圳湾", "留仙洞大厦");
         },
     }
 

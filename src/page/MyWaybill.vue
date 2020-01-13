@@ -25,23 +25,7 @@
                 </el-form>
                 <el-table :data="liste" class="mt20">
                     <el-table-column type="index" width="50" label="序号"></el-table-column>
-                    <el-table-column prop="dfsdfddfa" label="状态" width="80">
-                        <template>
-                            <span class="ls sz">待发货</span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column prop="dfsdfddff" label="制单日期" width="100"></el-table-column>
-                    <el-table-column prop="dfsdfddfg" label="单号"></el-table-column>
-                    <el-table-column prop="dfsdfddfh" label="到达站" width="250"></el-table-column>
-                    <el-table-column prop="dfsdfddfi" label="货物名称" width="120"></el-table-column>
-                    <el-table-column prop="dfsdfddfj" label="件数"></el-table-column>
-                    <el-table-column prop="dfsdfddfk" label="重量"></el-table-column>
-                    <el-table-column prop="dfsdfddfl" label="体积"></el-table-column>
-                    <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
-                    <el-table-column prop="dfsdfddfw" label="收货电话"></el-table-column>
-                    <el-table-column prop="dfsdfddfr" label="收货地址" width="300"></el-table-column>
-                    <el-table-column prop="dfsdfddft" label="收货备注"></el-table-column>
-                    <el-table-column label="操作" width="140">
+                     <el-table-column label="操作" width="140" align="center">
                         <template slot-scope="scope">
                             <div>
                                 <span class="ls sz" @click="hf('waybillDetails')">详情</span>
@@ -59,6 +43,23 @@
                             </div>
                         </template>
                     </el-table-column>
+                    <el-table-column prop="dfsdfddfa" label="状态" width="80">
+                        <template>
+                            <span class=" ">待发货</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="dfsdfddff" label="制单日期" width="100"></el-table-column>
+                    <el-table-column prop="dfsdfddfg" label="单号"></el-table-column>
+                    <el-table-column prop="dfsdfddfh" label="到达站" width="250"></el-table-column>
+                    <el-table-column prop="dfsdfddfi" label="货物名称" width="120"></el-table-column>
+                    <el-table-column prop="dfsdfddfj" label="件数"></el-table-column>
+                    <el-table-column prop="dfsdfddfk" label="重量"></el-table-column>
+                    <el-table-column prop="dfsdfddfl" label="体积"></el-table-column>
+                    <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
+                    <el-table-column prop="dfsdfddfw" label="收货电话"></el-table-column>
+                    <el-table-column prop="dfsdfddfr" label="收货地址" width="300"></el-table-column>
+                    <el-table-column prop="dfsdfddft" label="收货备注"  width="140"></el-table-column>
+                   
                 </el-table>
                 <div>
                     <div class="tr mt30">

@@ -2,8 +2,7 @@
 <template>
     <div>
         <p class="bbm pm20 fz16 bgff pt20 pl20">
-            客户评价（针对登陆账号的托运单位）
-
+            客户评价
         </p>
 
         <div class="sddrcrr">
@@ -41,11 +40,11 @@
                             评价内容：货物很及时，就是派送员有点慢，联系不上。
                         </div>
                         <div class="mt10">
-                            <img src="http://duxinggj.com/www/static/img/2.jpg" class="dtretxewe cz" v-for="sd in 3">
+                            <el-image  v-for="sd in 3" class="dtretxewe" src="http://duxinggj.com/www/static/img/2.jpg" :preview-src-list="srcList"></el-image>
 
                         </div>
-                        
-  <div class="mt10">
+
+                        <div class="mt10">
                             处理回复：公司已倾听你的意见，感谢您的评价。
                         </div>
                     </div>
@@ -64,6 +63,11 @@
                 checkedc: '',
                 checkedd: '',
                 checkede: '',
+                url: 'http://duxinggj.com/www/static/img/2.jpg',
+                srcList: [
+                    'http://duxinggj.com/www/static/img/2.jpg',
+                    'http://duxinggj.com/www/static/img/2.jpg'
+                ]
             }
         },
         components: {

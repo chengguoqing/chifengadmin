@@ -8,10 +8,10 @@
             <div class="dfgdgr bgff">
                 <el-form label-width="120px" :inline="true">
                     <el-form-item label="运单编号">
-                        <el-input placeholder="请输入运单编号" class="shhxeert"></el-input>
+                        <el-input placeholder="请输入运单编号" class="shhxeert" v-model="sddfrwta"></el-input>
                     </el-form-item>
                     <el-form-item label="">
-                        <el-input placeholder="运单编号、到达站、收货人、收货人电话" class="shhxeert ab"></el-input>
+                        <el-input placeholder="到达站、收货人、收货人电话" class="shhxeert ab" v-model="sddfrwtb"></el-input>
                     </el-form-item>
                     <el-form-item label="">
                         <el-checkbox v-model="forms.ddffrc">已处理</el-checkbox>
@@ -23,6 +23,15 @@
                 </el-form>
                 <el-table :data="liste" class="mt20">
                     <el-table-column type="index" width="50" label="序号"></el-table-column>
+                    <el-table-column label="操作" width="140" align="center">
+                        <template slot-scope="scope">
+                            <div>
+                                <span class="ls sz" @click="hf('claimxq')">详情</span>
+
+
+                            </div>
+                        </template>
+                    </el-table-column>
                     <el-table-column prop="dfsdfddff" label="运单日期" width="100"></el-table-column>
                     <el-table-column prop="dfsdfddff" label="申请日期" width="100"></el-table-column>
                     <el-table-column prop="dfsdfddfg" label="运单编号" width="100"></el-table-column>
@@ -34,7 +43,7 @@
                     <el-table-column prop="dfsdfddfj" label="货损金额" width="80"></el-table-column>
                     <el-table-column prop="" label="状态" width="80">
                         <template>
-                            <span class="ls sz">待发货</span>
+                            <span>待发货</span>
                         </template>
                     </el-table-column>
                     <el-table-column prop="dfsdfddft" label="货损说明"></el-table-column>
@@ -44,15 +53,7 @@
                         </template>
                     </el-table-column>
                     <el-table-column prop="dfsdfddfj" label="实际理赔金额" width="110"></el-table-column>
-                    <el-table-column label="操作" width="140">
-                        <template slot-scope="scope">
-                            <div>
-                                <span class="ls sz" @click="hf('claimxq')">详情</span>
 
-
-                            </div>
-                        </template>
-                    </el-table-column>
                 </el-table>
                 <div>
                     <div class="tr mt30">
@@ -70,6 +71,8 @@
     export default {
         data() {
             return {
+                sddfrwta: '',
+                sddfrwtb: '',
                 forms: {
                     ddffra: '',
                     ddffrb: '',

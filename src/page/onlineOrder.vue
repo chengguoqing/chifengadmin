@@ -58,7 +58,7 @@
                         </el-col>
                         <el-col :span="8">
                             <el-form-item label="所属网点：">
-                                <el-input placeholder="请输入所属网点" v-model="forme.dsfdsfdfd"></el-input>
+                                所属网点所属网点所属网点所属网点
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
@@ -129,12 +129,12 @@
                         </el-col>
                         <el-col :span="4">
                             <el-form-item label="网点编号：">
-                                <el-input placeholder="请输入网点编号" v-model="forme.dsfdsfdxdb"></el-input>
+                                123446
                             </el-form-item>
                         </el-col>
                         <el-col :span="12">
                             <el-form-item label="网点地址：">
-                                <el-input placeholder="请输入网点地址" v-model="forme.dsfdsfdxdc"></el-input>
+                                网点地址网点地址网点地址网点地址
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
@@ -160,7 +160,10 @@
                         </el-col>
                         <el-col :span="8">
                             <el-form-item label="回单类型：">
-                                <el-input placeholder="请输入回单类型" v-model="forme.dsfdsfdxdh"></el-input>
+                                <el-select v-model="forme.dsfdsfdxdh" class="w100" filterable>
+                                    <el-option label="回单" value="1"></el-option>
+                                    <el-option label="收条" value="2"></el-option>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
@@ -205,7 +208,7 @@
     export default {
         data() {
             return {
-                dialogVisible:false,
+                dialogVisible: false,
                 chengshi: '',
                 forme: {
                     dsfdsfdfa: '',

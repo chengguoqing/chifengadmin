@@ -34,7 +34,7 @@ export default new Router({
             component: Outletrrates,
             bz: "",
             meta: {
-                title: '登录'
+                title: '网点运价'
             }
 
     }, {

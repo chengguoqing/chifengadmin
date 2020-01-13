@@ -9,125 +9,42 @@
             <div class="dfgdgr bgff">
                 <div>
                     <el-date-picker :default-time="['00:00:00', '23:59:59']" v-model="form.jhhssdfa" type="datetimerange" range-separator="-" start-placeholder="起始日期" end-placeholder="截至日期"></el-date-picker>
+                    <el-button type="primary" class="ml20 sdfrt">查询</el-button>
                 </div>
                 <div class="mt30">
-                    <el-tabs class="tihg_eret">
-                        <el-tab-pane label="单量分布">
-                            <div class="xdeertt ">
-                                <tuzhuai :shuju="xddera"></tuzhuai>
-                                <div class="mt20">
-                                    <table class="dfdfrttxze" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <td>地区</td>
-                                                <td>票数</td>
-                                                <td>占比</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sd in 6">
-                                                <td>北京</td>
-                                                <td>53</td>
-                                                <td>10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <div class="dsfrtxeeer">
+                        <el-row :gutter="20">
+                            <el-col :span="8">
+                                <div class="dderrtts">
+                                    <kjhcder derttse="单量分布"></kjhcder>
                                 </div>
-                            </div>
-                        </el-tab-pane>
-                        <el-tab-pane label="运费分布">
-                            <div class="xdeertt ">
-                                <tuzhuai :shuju="xdderb"></tuzhuai>
-                                <div class="mt20">
-                                    <table class="dfdfrttxze" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <td>地区</td>
-                                                <td>票数</td>
-                                                <td>占比</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sd in 6">
-                                                <td>北京</td>
-                                                <td>53</td>
-                                                <td>10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            </el-col>
+                            <el-col :span="8">
+                                <div class="dderrtts">
+                                    <kjhcder  derttse="运费分布"></kjhcder>
                                 </div>
-                            </div>
-                        </el-tab-pane>
-                        <el-tab-pane label="准点率">
-                            <div class="xdeertt ">
-                                <tuzhuai :shuju="xddera"></tuzhuai>
-                                <div class="mt20">
-                                    <table class="dfdfrttxze" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <td>地区</td>
-                                                <td>票数</td>
-                                                <td>占比</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sd in 6">
-                                                <td>北京</td>
-                                                <td>53</td>
-                                                <td>10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            </el-col>
+                            <el-col :span=8>
+                                <div class="dderrtts">
+                                    <kjhcder  derttse="准点率"></kjhcder>
                                 </div>
-                            </div>
-                        </el-tab-pane>
-                        <el-tab-pane label="货损率">
-                            <div class="xdeertt ">
-                                <tuzhuai :shuju="xddera"></tuzhuai>
-                                <div class="mt20">
-                                    <table class="dfdfrttxze" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <td>地区</td>
-                                                <td>票数</td>
-                                                <td>占比</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sd in 6">
-                                                <td>北京</td>
-                                                <td>53</td>
-                                                <td>10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            </el-col>
+                            <el-col :span="8">
+                                <div class="dderrtts">
+                                    <kjhcder  derttse="货损率"></kjhcder>
                                 </div>
-                            </div>
-                        </el-tab-pane>
-                        <el-tab-pane label="好评率">
-                            <div class="xdeertt ">
-                                <tuzhuai :shuju="xddera"></tuzhuai>
-                                <div class="mt20">
-                                    <table class="dfdfrttxze" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <td>地区</td>
-                                                <td>票数</td>
-                                                <td>占比</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sd in 6">
-                                                <td>北京</td>
-                                                <td>53</td>
-                                                <td>10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            </el-col>
+                            <el-col :span="8">
+                                <div class="dderrtts">
+                                    <kjhcder  derttse="好评率"></kjhcder>
                                 </div>
-                            </div>
-                        </el-tab-pane>
-                    </el-tabs>
+                            </el-col>
+
+                        </el-row>
+
+                    </div>
+                    <p class="qc"></p>
+
                 </div>
             </div>
         </div>
@@ -136,6 +53,8 @@
 </template>
 <script>
     import tuzhuai from "@/components/tuzhuai"
+    import kjhcder from "@/components/kjhcder"
+
     export default {
         data() {
             return {
@@ -208,7 +127,8 @@
                             }
                         ]
                     }]
-                },  xdderb: {
+                },
+                xdderb: {
                     tooltip: {
                         trigger: 'item',
                         formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -240,8 +160,7 @@
                                 show: false
                             }
                         },
-                        data: [
-                            {
+                        data: [{
                                 value: 135,
                                 name: '无锡'
                             },
@@ -267,7 +186,8 @@
             }
         },
         components: {
-            tuzhuai
+            tuzhuai,
+            kjhcder
         },
         methods: {
 
@@ -292,6 +212,15 @@
     .dfdfrttxze td {
         border-right: 1px solid #e0e0e0;
         border-bottom: 1px solid #e0e0e0;
+    }
+
+    .sdfrt {
+        width: 150px
+    }
+
+
+    .dderrtts {
+        margin-bottom: 20px
     }
 
 </style>

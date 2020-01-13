@@ -34,7 +34,7 @@
 </script>
 <style scoped>
     .sdfdsf_eer{
-       width:550px;
+       width:500px;
         height: 400px
     }
 </style>

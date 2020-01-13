@@ -8,7 +8,7 @@
                 <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#47484B" text-color="#fff" :router="true" active-text-color="#2464C8">
                     <el-menu-item index="/">
                         <i class="el-icon-s-goods"></i>
-                        <span slot="title">网点及运价</span>
+                        <span slot="title">网点运价</span>
                     </el-menu-item>
                     <el-menu-item index="/MyWaybill">
                         <i class="el-icon-s-order"></i>
@@ -27,7 +27,7 @@
                     
                     <el-menu-item index="/claimlist">
                         <i class="el-icon-s-platform"></i>
-                        <span slot="title">理赔申请</span>
+                        <span slot="title">我的理赔</span>
                     </el-menu-item>
 
                     <el-menu-item index="/clientEvaluation">
