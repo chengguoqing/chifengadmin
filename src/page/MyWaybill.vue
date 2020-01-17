@@ -16,7 +16,7 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item>
-                        <el-input placeholder="收货人/收货人电话/到达站/单号" class="eeertxwe"></el-input>
+                        <el-input placeholder="收货人/收货人电话/到达站/单号" class="eeertxwe" v-model="fsdttswere" ></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary">查询</el-button>
@@ -25,24 +25,22 @@
                 </el-form>
                 <el-table :data="liste" class="mt20">
                     <el-table-column type="index" width="50" label="序号"></el-table-column>
-                     <el-table-column label="操作" width="140" align="center">
+                     <el-table-column label="操作" width="60" align="center">
                         <template slot-scope="scope">
-                            <div>
-                                <span class="ls sz" @click="hf('waybillDetails')">详情</span>
-                            <el-dropdown class="ml10 ls">
-                                <span class="el-dropdown-link sz">
-                                    更多<i class="el-icon-arrow-down el-icon--right"></i>
-                                </span>
-                                <el-dropdown-menu slot="dropdown" class="fz14 ls ">
-                                    <el-dropdown-item> <span class=" sz" @click="hf('WaybillTracking')">追踪</span></el-dropdown-item>
-                                    <el-dropdown-item><span class=" sz" @click="hf('deliveryEvaluation')">评价</span></el-dropdown-item>
-                                     <el-dropdown-item><span class=" sz" @click="hf('claim')">理赔</span></el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                                
-                            </div>
+                            <span class="ls sz" @click="hf('waybillDetails')">详情</span>
                         </template>
                     </el-table-column>
+                    <el-table-column label="追踪" width="60" align="center">
+                        <span class="ls sz" @click="hf('WaybillTracking')">追踪</span>
+                    </el-table-column>
+                    <el-table-column label="评价" width="60" align="center">
+                        <span class="ls sz" @click="hf('deliveryEvaluation')">评价</span>
+                    </el-table-column>
+                    <el-table-column label="理赔" width="60" align="center">
+                        <span class="ls sz" @click="hf('claim')">理赔</span>
+                    </el-table-column>
+                    
+                    
                     <el-table-column prop="dfsdfddfa" label="状态" width="80">
                         <template>
                             <span class=" ">待发货</span>
@@ -50,14 +48,13 @@
                     </el-table-column>
                     <el-table-column prop="dfsdfddff" label="制单日期" width="100"></el-table-column>
                     <el-table-column prop="dfsdfddfg" label="单号"></el-table-column>
-                    <el-table-column prop="dfsdfddfh" label="到达站" width="250"></el-table-column>
+                    <el-table-column prop="dfsdfddfh" label="收货地址" width="250"></el-table-column>
                     <el-table-column prop="dfsdfddfi" label="货物名称" width="120"></el-table-column>
                     <el-table-column prop="dfsdfddfj" label="件数"></el-table-column>
                     <el-table-column prop="dfsdfddfk" label="重量"></el-table-column>
                     <el-table-column prop="dfsdfddfl" label="体积"></el-table-column>
                     <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
                     <el-table-column prop="dfsdfddfw" label="收货电话"></el-table-column>
-                    <el-table-column prop="dfsdfddfr" label="收货地址" width="300"></el-table-column>
                     <el-table-column prop="dfsdfddft" label="收货备注"  width="140"></el-table-column>
                    
                 </el-table>
@@ -82,6 +79,7 @@
                     jhhssdfa: '',
                     jhhssdfb: ''
                 },
+                fsdttswere:'',
                 xialas: [{
                     name: '全 部',
                     id: '1'

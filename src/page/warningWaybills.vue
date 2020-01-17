@@ -8,7 +8,7 @@
                 <el-row class="cen">
                     <el-col :span="6">
                         <div class="sz" @click="gtesse(0)">
-                            <p class="fz20 b">
+                            <p class="fz20 b"  :class="idsd==0?'ls':''">
                                 超时运单
                             </p>
                             <p class="b fz18 mt10" :class="idsd==0?'dfdrtyty':''">
@@ -18,7 +18,7 @@
                     </el-col>
                    <el-col :span="6">
                         <div class="sz"  @click="gtesse(1)">
-                            <p class="fz20 b">
+                            <p class="fz20 b" :class="idsd==1?'ls':''">
                                 等通知/代收运单
                             </p>
                             <p class="b fz18 mt10" :class="idsd==1?'dfdrtyty':''">
@@ -28,7 +28,7 @@
                     </el-col>
                     <el-col :span="6">
                         <div class="sz"  @click="gtesse(2)">
-                            <p class="fz20 b">
+                            <p class="fz20 b" :class="idsd==2?'ls':''">
                                 待发运单
                             </p>
                             <p class="b fz18 mt10" :class="idsd==2?'dfdrtyty':''">
@@ -38,7 +38,7 @@
                     </el-col>
                     <el-col :span="6"  >
                         <div class="sz" @click="gtesse(3)">
-                            <p class="fz20 b">
+                            <p class="fz20 b" :class="idsd==3?'ls':''">
                                 退货运单
                             </p>
                             <p class="b fz18 mt10" :class="idsd==3?'dfdrtyty':''">
@@ -66,14 +66,13 @@
                     </el-table-column>
                     <el-table-column prop="dfsdfddff" label="制单日期" width="100"></el-table-column>
                     <el-table-column prop="dfsdfddfg" label="单号"></el-table-column>
-                    <el-table-column prop="dfsdfddfh" label="到达站" width="250"></el-table-column>
+                    <el-table-column prop="dfsdfddfh" label="收货地址" width="250"></el-table-column>
                     <el-table-column prop="dfsdfddfi" label="货物名称" width="120"></el-table-column>
                     <el-table-column prop="dfsdfddfj" label="件数"></el-table-column>
                     <el-table-column prop="dfsdfddfk" label="重量"></el-table-column>
                     <el-table-column prop="dfsdfddfl" label="体积"></el-table-column>
                     <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
                     <el-table-column prop="dfsdfddfw" label="收货电话"></el-table-column>
-                    <el-table-column prop="dfsdfddfr" label="收货地址" width="300"></el-table-column>
                     <el-table-column prop="dfsdfddft" label="收货备注" width="120"></el-table-column>
                 </el-table>
                 <div>

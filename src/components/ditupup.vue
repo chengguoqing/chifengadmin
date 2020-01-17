@@ -3,10 +3,16 @@
     <div>
         <el-table :data="tableData" style="width: 100%" border>
             <el-table-column type="index" label="序号" width="80"></el-table-column>
-            <el-table-column prop="jhshsda" label="里程"></el-table-column>
+            <el-table-column prop="jhshsda" label="里程" width="120"></el-table-column>
             <el-table-column prop="jhshsdb" label="地址">
                 <template slot-scope="scope">
-                    <span @click="ssee" class="sz">{{scope.row.jhshsdb}}</span>
+                    <span class="sz">{{scope.row.jhshsdb}}</span>
+                </template>
+            </el-table-column>
+                <el-table-column label="操作" width="80">
+                <template slot-scope="scope">
+                  
+                    <span class="sz ml10 ls" @click="ssee" >选择</span>
                 </template>
             </el-table-column>
         </el-table>

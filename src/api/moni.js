@@ -10,7 +10,7 @@ class Myding {
                     dfsdfddfd: '评价',
                     dfsdfddfe: '理赔',
                     dfsdfddff: '@date(yyyy-MM-dd)',
-                    dfsdfddfg: '@integer(100000, 100000000)',
+                    dfsdfddfg: '@integer(100000000000, 900000000000)',
                     dfsdfddfh: '@county(true)',
                     dfsdfddfi: '@csentence(5)',
                     dfsdfddfj: '@integer(10, 100)',

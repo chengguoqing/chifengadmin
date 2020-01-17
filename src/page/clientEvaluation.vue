@@ -6,7 +6,8 @@
         </p>
 
         <div class="sddrcrr">
-            <div class="dfgdgr bgff">
+            <div class="dfgdgr bgff cen">
+               <div class="tl f_b">
                 <p class="fz14 z9">
                     说明：客户签收7天后，系统默认好评。
                 </p>
@@ -49,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-
+</div>
             </div>
         </div>
     </div>

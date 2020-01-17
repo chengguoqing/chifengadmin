@@ -5,7 +5,8 @@
             运单追踪
         </p>
         <div class="sddrcrr">
-            <div class="dfgdgr bgff">
+            <div class="dfgdgr bgff cen sdfsfgtty">
+               <div class="tl f_b">
                 <el-steps direction="vertical" :active="1" class="sdfttsew" finish-status="success">
                     <el-step title="11-13   12：26" description="已到站"></el-step>
                     <el-step title="11-12   20:22 " description="已发车，配载车辆：XXXX"></el-step>
@@ -36,6 +37,7 @@
                         <span class="ls"> 0510-83796616</span>
                     </el-form-item>
                 </el-form>
+                </div>
             </div>
         </div>
 
@@ -64,7 +66,24 @@
     .cceeerrt img.el-image__inner.el-image__preview{
         opacity: 0
     }
-
+    .sdfttsew .el-step__title{
+        font-size: 18px !important
+    }
+    .sdfttsew .el-step__description{
+          font-size: 16px !important
+    }
+    .sdfttsew .el-step__title.is-wait,.sdfttsew .el-step__description.is-wait,.sdfttsew .el-step__icon-inner{
+        color: #000 !important
+    }
+    .sdfttsew .el-step__icon.is-text{
+        border-color: #333 !important
+    }
+    .sdfttsew .el-step__head.is-success .el-step__icon.is-text{
+        border-color: #00a0e9 !important 
+    }
+    .sdfttsew .el-step__head.is-success .el-step__icon-inner{
+       color: #00a0e9 !important 
+    }
 </style>
 <style scoped>
     .sdfttsew {
@@ -81,5 +100,7 @@
         width: 100%;
         height: 100%;
     }
-
+    .sdfsfgtty{
+        padding-top: 140px;
+    }
 </style>

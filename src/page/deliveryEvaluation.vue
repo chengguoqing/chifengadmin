@@ -5,8 +5,8 @@
             发货评价
         </p>
         <div class="sddrcrr">
-            <div class="dfgdgr bgff ">
-                <el-form label-width="120px" class="mt30">
+            <div class="dfgdgr bgff cen">
+                <el-form label-width="120px" class="mt30 tl f_b">
                     <el-form-item label="服务态度：">
                         <el-rate v-model="foesdd.asdfddfda" class="mt10"></el-rate>
                     </el-form-item>

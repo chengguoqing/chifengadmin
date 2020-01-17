@@ -6,8 +6,8 @@
         </p>
 
         <div class="sddrcrr">
-            <div class="dfgdgr bgff">
-                <el-form label-width="120px" class="mt30">
+            <div class="dfgdgr bgff cen">
+                <el-form label-width="120px" class="mt30 tl f_b">
                     <el-form-item label="运单编号：">
                         <el-input value="191110045" disabled class="sdfsdfrr"></el-input>
                     </el-form-item>
@@ -41,7 +41,7 @@
     export default {
         data() {
             return {
-                dsfdsr: true,
+                dsfdsr: false,
                 dialogImageUrl: '',
                 dialogVisible: false,
                 foesdd: {

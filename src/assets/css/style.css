@@ -175,3 +175,12 @@ p.bbm.pm20.fz16.bgff.pt20.pl20{
     font-size: 22px !important;
     font-weight: 600
 }
+.el-form-item__label{
+    color: #333 !important
+}
+.el-input__inner::-webkit-input-placeholder,.el-textarea__inner::-webkit-input-placeholder {
+   color: #666 !important
+}
+.el-input__inner::-moz-input-placeholder,.el-textarea__inner::-moz-input-placeholder {
+   color: #666 !important
+}

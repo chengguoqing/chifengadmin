@@ -8,39 +8,30 @@
         <div class="sddrcrr">
             <div class="dfgdgr bgff">
                 <div>
-                    <el-date-picker :default-time="['00:00:00', '23:59:59']" v-model="form.jhhssdfa" type="datetimerange" range-separator="-" start-placeholder="起始日期" end-placeholder="截至日期"></el-date-picker>
+                   
+                    <el-date-picker v-model="sdfdfa" type="month" placeholder="选择月"></el-date-picker>
+                    <span class="fz14 ml10 mr10">至</span>
+                    <el-date-picker v-model="sdfdfb" type="month" placeholder="选择月"></el-date-picker>
+
                     <el-button type="primary" class="ml20 sdfrt">查询</el-button>
                 </div>
                 <div class="mt30">
-                    <div class="dsfrtxeeer">
-                        <el-row :gutter="20">
-                            <el-col :span="8">
-                                <div class="dderrtts">
-                                    <kjhcder derttse="单量分布"></kjhcder>
-                                </div>
-                            </el-col>
-                            <el-col :span="8">
-                                <div class="dderrtts">
-                                    <kjhcder  derttse="运费分布"></kjhcder>
-                                </div>
-                            </el-col>
-                            <el-col :span=8>
-                                <div class="dderrtts">
-                                    <kjhcder  derttse="准点率"></kjhcder>
-                                </div>
-                            </el-col>
-                            <el-col :span="8">
-                                <div class="dderrtts">
-                                    <kjhcder  derttse="货损率"></kjhcder>
-                                </div>
-                            </el-col>
-                            <el-col :span="8">
-                                <div class="dderrtts">
-                                    <kjhcder  derttse="好评率"></kjhcder>
-                                </div>
-                            </el-col>
-
-                        </el-row>
+                    <div class="dsfrtxeeer parent">
+                        <div class="dderrtts">
+                            <kjhcder derttse="单量分布" jhshse="1"></kjhcder>
+                        </div>
+                        <div class="dderrtts">
+                            <kjhcder derttse="运费分布" jhshse="2"></kjhcder>
+                        </div>
+                        <div class="dderrtts">
+                            <kjhcder derttse="准点率" jhshse="3"></kjhcder>
+                        </div>
+                        <div class="dderrtts">
+                            <kjhcder derttse="货损率" jhshse="4"></kjhcder>
+                        </div>
+                        <div class="dderrtts">
+                            <kjhcder derttse="好评率" jhshse="5"></kjhcder>
+                        </div>
 
                     </div>
                     <p class="qc"></p>
@@ -58,6 +49,8 @@
     export default {
         data() {
             return {
+                sdfdfa:'',
+                sdfdfb:'',
                 form: {
                     jhhssdfa: ''
                 },
@@ -218,9 +211,12 @@
         width: 150px
     }
 
-
-    .dderrtts {
-        margin-bottom: 20px
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 0px;
     }
 
 </style>

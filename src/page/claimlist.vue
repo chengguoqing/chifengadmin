@@ -15,7 +15,7 @@
                     </el-form-item>
                     <el-form-item label="">
                         <el-checkbox v-model="forms.ddffrc">已处理</el-checkbox>
-                        <el-checkbox v-model="forms.ddffrc">待处理</el-checkbox>
+                        <el-checkbox v-model="forms.ddffrd">待处理</el-checkbox>
                     </el-form-item>
                     <el-form-item label="">
                         <el-button type="primary" class="dfgrterty">查询</el-button>
@@ -34,8 +34,8 @@
                     </el-table-column>
                     <el-table-column prop="dfsdfddff" label="运单日期" width="100"></el-table-column>
                     <el-table-column prop="dfsdfddff" label="申请日期" width="100"></el-table-column>
-                    <el-table-column prop="dfsdfddfg" label="运单编号" width="100"></el-table-column>
-                    <el-table-column prop="dfsdfddfr" label="到达站" width="180"></el-table-column>
+                    <el-table-column prop="dfsdfddfg" label="运单编号" width="130"></el-table-column>
+                    <el-table-column prop="dfsdfddfr" label="收货地址" width="180"></el-table-column>
                     <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
                     <el-table-column prop="dfsdfddfw" label="收货人电话"></el-table-column>
                     <el-table-column prop="dfsdfddfw" label="货名"></el-table-column>
@@ -76,7 +76,8 @@
                 forms: {
                     ddffra: '',
                     ddffrb: '',
-                    ddffrc: ''
+                    ddffrc: '',
+                    ddffrd: ''
                 },
                 liste: ''
             }
