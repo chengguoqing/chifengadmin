@@ -10,7 +10,7 @@
                 <div class="hhcdeeert">
                     <el-form label-width="120px">
                         <el-form-item label="起始站：">
-                            <el-cascader class="w100" placeholder="请输入省/市/区/镇" v-model="forme.sdfsdfa" :options="optseions"></el-cascader>
+                            <el-cascader class="w100" placeholder="请输入" v-model="forme.sdfsdfa" :options="optseions"></el-cascader>
                         </el-form-item>
 
                         <el-form-item label="收货地址：">
@@ -65,33 +65,36 @@
                         <el-button type="" class="ml20 dfsfdrrt">重置</el-button>
                     </div>
 
-                    <el-row class="cderrttxe" v-if="forme.sdfsdff==1 && chauxns">
-                        <el-col :span="12">
-                            <span class="fz12 z6">自提运费： </span>
-                        </el-col>
-                        <el-col :span="12" class="tr">
-                            <span class="fz12 z6">预计到达时间：5天 </span>
-                        </el-col>
-                        <el-col :span="12">
-                            <span class="fz12 z6">网点编号：</span>
-                        </el-col>
-                        <el-col :span="12" class="tr">
-                            <span class="fz12 z6"> 自提里程：</span>
-                        </el-col>
-                        <el-col :span="12">
-                            <span class="fz12 z6">网点地址：</span>
-                        </el-col>
-                    </el-row>
+                    <div class="cderrttxe">
+                        <el-row class=" dfdrtxdeer" v-if="forme.sdfsdff==1 && chauxns">
+                            <el-col :span="12">
+                                <span class="fz12 z6">自提运费： </span>
+                            </el-col>
+                            <el-col :span="12" class="tr">
+                                <span class="fz12 z6">预计到达时间：5天 </span>
+                            </el-col>
+                            <el-col :span="12">
+                                <span class="fz12 z6">网点编号：</span>
+                            </el-col>
+                            <el-col :span="12" class="tr">
+                                <span class="fz12 z6"> 自提里程：</span>
+                            </el-col>
+                            <el-col :span="12">
+                                <span class="fz12 z6">网点地址：</span>
+                            </el-col>
+                        </el-row>
+                    </div>
 
-
-                    <el-row class="cderrttxe" v-if="forme.sdfsdff==2 && chauxns">
-                        <el-col :span="12">
-                            <span class="fz12 z6">运价：300</span>
-                        </el-col>
-                        <el-col :span="12" class="tr">
-                            <span class="fz12 z6">预计到达时间：5天</span>
-                        </el-col>
-                    </el-row>
+                    <div class="cderrttxe">
+                        <el-row class="dfdrtxdeer" v-if="forme.sdfsdff==2 && chauxns">
+                            <el-col :span="12">
+                                <span class="fz12 z6">运价：300</span>
+                            </el-col>
+                            <el-col :span="12" class="tr">
+                                <span class="fz12 z6">预计到达时间：5天</span>
+                            </el-col>
+                        </el-row>
+                    </div>
                     <div class="cderrttxe fz12 z6 b row">
                         <span> 注：</span>
                         <span class="col">
@@ -120,20 +123,17 @@
                 chauxns: false,
                 cddrr: false,
                 optseions: [{
-                    value: 'zhinan',
-                    label: '无锡',
-                    children: [{
-                        value: 'shejiyuanze',
-                        label: '永康',
-                        children: [{
-                            value: 'yizhi',
-                            label: '金华',
-                            children: [{
-                                value: 'yizhiwwer',
-                                label: '武义'
-                            }]
-                        }]
-                    }]
+                    value: 'yizhiwwera',
+                    label: '无锡'
+                }, {
+                    value: 'yizhiwwerb',
+                    label: '永康'
+                }, {
+                    value: 'yizhiwwerc',
+                    label: '金华'
+                }, {
+                    value: 'yizhiwwedr',
+                    label: '武义'
                 }],
                 forme: {
                     sdfsdfa: '',
@@ -142,7 +142,7 @@
                     sdfsdfd: '',
                     sdfsdfe: '',
                     sdfsdff: '',
-                    sdfsdfg: '',
+                    sdfsdfg: '1',
                     sdfsdfh: ''
 
                 }
@@ -183,6 +183,12 @@
     .dfsdsrtt {
         width: 600px;
         margin-top: 20px
+    }
+
+    .dfdrtxdeer {
+        border: 1px solid #e8e8e8;
+        padding: 10px;
+        border-radius: 4px;
     }
 
 </style>

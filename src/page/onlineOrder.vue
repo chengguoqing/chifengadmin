@@ -5,7 +5,7 @@
             在线下单
         </p>
 
-        <div class="sddrcrr">
+        <div class="sddrcrr fdgdfrtyty">
             <div class="dfgdgr bgff">
                 <el-button type="primary">＋新增运单</el-button>
                 <el-button type="primary">↓保存运单</el-button>
@@ -246,20 +246,17 @@
                 dialogVisible: false,
                 chengshi: '',
                 optseions: [{
-                    value: 'zhinan',
-                    label: '无锡',
-                    children: [{
-                        value: 'shejiyuanze',
-                        label: '永康',
-                        children: [{
-                            value: 'yizhi',
-                            label: '金华',
-                            children: [{
-                                value: 'yizhiwwer',
-                                label: '武义'
-                            }]
-                        }]
-                    }]
+                    value: 'yizhiwwera',
+                    label: '无锡'
+                }, {
+                    value: 'yizhiwwerb',
+                    label: '永康'
+                }, {
+                    value: 'yizhiwwerc',
+                    label: '金华'
+                }, {
+                    value: 'yizhiwwedr',
+                    label: '武义'
                 }],
                 forme: {
                     dsfdsfdfa: '',
@@ -274,7 +271,7 @@
                     dsfdsfdfj: '',
                     dsfdsfdfk: '',
                     dsfdsfdfl: '',
-                    dsfdsfdfq: '',
+                    dsfdsfdfq: '1',
                     dsfdsfdfw: '',
                     dsfdsfdxda: '',
                     dsfdsfdxdb: '',
@@ -304,7 +301,7 @@
 
 </script>
 <style>
-    .sddrcrr .el-form-item__label {
+    .fdgdfrtyty .el-form-item__label {
         text-align: left;
     }
 

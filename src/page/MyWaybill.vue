@@ -47,14 +47,14 @@
                         </template>
                     </el-table-column>
                     <el-table-column prop="dfsdfddff" label="制单日期" width="100"></el-table-column>
-                    <el-table-column prop="dfsdfddfg" label="单号"></el-table-column>
+                    <el-table-column prop="dfsdfddfg" label="单号" width="120"></el-table-column>
                     <el-table-column prop="dfsdfddfh" label="收货地址" width="250"></el-table-column>
                     <el-table-column prop="dfsdfddfi" label="货物名称" width="120"></el-table-column>
                     <el-table-column prop="dfsdfddfj" label="件数"></el-table-column>
                     <el-table-column prop="dfsdfddfk" label="重量"></el-table-column>
                     <el-table-column prop="dfsdfddfl" label="体积"></el-table-column>
                     <el-table-column prop="dfsdfddfq" label="收货人"></el-table-column>
-                    <el-table-column prop="dfsdfddfw" label="收货电话"></el-table-column>
+                    <el-table-column prop="dfsdfddfw" label="收货电话" width="120"></el-table-column>
                     <el-table-column prop="dfsdfddft" label="收货备注"  width="140"></el-table-column>
                    
                 </el-table>
